@@ -10,12 +10,12 @@ http://localhost:8080/WigWS/webresources/
 URL DOS METODOS:
 ---- usuario
 
-usuario/get/{login} - buscar usuario
-usuario/login/{login}/{senha} - validar login
-usuario/Listar - listar usuarios
-usuario/Excluir/{login} = excluir usuario - method not allowed - não funcionando 
-usuario/Inserir - inserir usuario
-usuario/Alterar - alterar usuario
+usuario/get/{login} - buscar usuario X
+usuario/login/{login}/{senha} - validar login X
+usuario/Listar - listar usuarios x
+usuario/Excluir/{login} = excluir usuario - method not allowed - não funcionando X
+usuario/Inserir - inserir usuario X
+usuario/Alterar - alterar usuario X
 
 ---- cliente
 

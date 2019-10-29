@@ -38,14 +38,14 @@ public class MainActivity extends AppCompatActivity {
                         // pegar a resposta
                         Usuario usuario = response.body();
                         resposta.setText("Email : " + usuario.getEmail() + "\n"
-                        + "Senha: " + usuario.getSenha() + "\n"
-                        + "Perfil: " + usuario.getPerfil());
+                                + "Senha: " + usuario.getSenha() + "\n"
+                                + "Perfil: " + usuario.getPerfil());
                     }
 
                     @Override
                     public void onFailure(Call<Usuario> call, Throwable t) {
                         // tratar algum erro
-                        Log.e("WigService  ","Erro ao buscar usuario");
+                        Log.e("WigService  ", "Erro ao buscar usuario");
                     }
                 });
             }
