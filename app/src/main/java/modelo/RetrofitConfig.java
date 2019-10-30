@@ -37,7 +37,7 @@ public class RetrofitConfig {
         @GET("usuario/Listar")
         Call<Usuario> listarUsuario();
 
-        @DELETE("usuario/Excluir/{login} = excluir usuario")
+        @DELETE("usuario/Excluir/{login}")
         Call<Usuario> excluirUsuario(@Path("login") String login);
 
         @POST("usuario/Cadastrar")
@@ -49,18 +49,17 @@ public class RetrofitConfig {
 
         //---------------------------------Cliente-----------------------------------
         @POST("cliente/Cadastrar")
-        Call<Cliente> cadastrarCliente(@Path("login") String login, @Path("senha") String senha,
-                                       @Path("email") String email, @Path("cpf") String cpf);
+        Call<Cliente> cadastrarCliente();
 
         @GET("cliente/Listar")
         Call<Cliente> listarCliente();
 
         //---------------------------------Avaliação------------------------------------------
         @GET("cliente/Avaliacao/Listar")
-        Call<Avaliacao> listarAvaliacao(String content);
+        Call<Avaliacao> listarAvaliacao();
 
         @POST("cliente/Avaliacao/Inserir")
-        Call<Avaliacao> inserirAvaliacao(String content);
+        Call<Avaliacao> inserirAvaliacao();
 
         @POST("cliente/Avaliacao/Responder")
         Call<Avaliacao> responderAvaliacao(String content);
