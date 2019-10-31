@@ -13,7 +13,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.204:8080/WigWS/webresources/";
+    String url = "http://10.10.54.164:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -32,7 +32,7 @@ public class RetrofitConfig {
         Call<Usuario> buscarUsuario(@Path("login") String login);
 
         @GET("usuario/login/{login}/{senha}")
-        Call<Usuario> validarLogin(@Path("login") String login, @Path("senha") String senha);
+        Call<String> validarLogin(@Path("login") String login, @Path("senha") String senha);
 
         @GET("usuario/Listar")
         Call<Usuario> listarUsuario();
