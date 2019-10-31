@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.DELETE;
+import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
@@ -56,9 +57,11 @@ public class RetrofitConfig {
         Call<Cliente> listarCliente();
 
         //---------------------------------Avaliação------------------------------------------
+
         @GET("cliente/Avaliacao/Listar")
         Call<Avaliacao> listarAvaliacao(String content);
 
+        @FormUrlEncoded
         @POST("cliente/Avaliacao/Inserir")
         Call<Avaliacao> inserirAvaliacao(String content);
 
