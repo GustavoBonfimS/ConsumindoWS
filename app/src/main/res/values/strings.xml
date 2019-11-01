@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ConsumindoWS</string>
     <string name="etUsername">username</string>
+    <string name="tela_de_login">Tela de Login</string>
+    <string name="login">Login</string>
+    <string name="senha">Senha</string>
+    <string name="fazer_login">Fazer login</string>
 </resources>

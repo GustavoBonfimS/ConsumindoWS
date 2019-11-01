@@ -16,11 +16,18 @@ public class TesteAvaliacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_avaliacao);
-        TextView tAvalia = (TextView) findViewById(R.id.editText);
+        TextView tAvalia = (TextView) findViewById(R.id.etAutor);
         Button btAvalia = (Button) findViewById(R.id.btAvaliacao);
+        TextView tAvalia2 = (TextView) findViewById(R.id.btAvaliacao);
+
+        final Avaliacao a = new Avaliacao();
+        a.setAutor(tAvalia.getText().toString());
+        a.setConteudo(tAvalia2.getText().toString());
+        a.setIdcliente(1);
+        a.setIdempresa(1);
     }
     public void onClickbtAvalia{
-        Call<Avaliacao> call = RetrofitConfig.
-
-            }
+        Call<Avaliacao> call = new RetrofitConfig().getWigService().inserirAvaliacao();
+        call.enqueue();
+    }
 }
