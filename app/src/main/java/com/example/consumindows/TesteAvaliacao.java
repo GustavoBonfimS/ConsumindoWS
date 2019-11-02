@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import modelo.Avaliacao;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -29,6 +31,7 @@ public class TesteAvaliacao extends AppCompatActivity {
         EditText autor = findViewById(R.id.etAutor);
         Button btAvalia = findViewById(R.id.btAvaliacao);
         EditText conteudo = findViewById(R.id.etConteudo);
+        final TextView resposta = findViewById(R.id.tvResposta);
 
         final Avaliacao a = new Avaliacao();
         a.setAutor(autor.getText().toString());
@@ -45,7 +48,8 @@ public class TesteAvaliacao extends AppCompatActivity {
                 call.enqueue(new Callback<Avaliacao>() {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
-                        retorno[0] = response.body();
+
+                        resposta.setText("sucesso");
                     }
 
                     @Override

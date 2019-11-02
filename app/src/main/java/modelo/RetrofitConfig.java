@@ -48,7 +48,8 @@ public class RetrofitConfig {
         Call<Usuario> excluirUsuario(@Path("login") String login);
 
         @POST("usuario/Cadastrar")
-        Call<Usuario> cadastrarUsuario(String content);
+        @Headers("Content-Type: application/json")
+        Call<Usuario> cadastrarUsuario(Cliente cliente);
 
         @PUT("usuario/Alterar")
         Call<Usuario> alterarUsuario(@Path("login") String login, @Path("senha") String senha);
@@ -56,7 +57,8 @@ public class RetrofitConfig {
 
         //---------------------------------Cliente-----------------------------------
         @POST("cliente/Cadastrar")
-        Call<Cliente> cadastrarCliente();
+        @Headers("Content-Type: application/json")
+        Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
         @GET("cliente/Listar")
         Call<Cliente> listarCliente();
@@ -71,7 +73,8 @@ public class RetrofitConfig {
         Call<Avaliacao> inserirAvaliacao(@Body Avaliacao avaliacao);
 
         @POST("cliente/Avaliacao/Responder")
-        Call<Avaliacao> responderAvaliacao(String content);
+        @Headers("Content-Type: application/json")
+        Call<Avaliacao> responderAvaliacao(@Body Avaliacao avaliacao);
     }
 
 
