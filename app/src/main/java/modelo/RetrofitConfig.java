@@ -13,13 +13,14 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.155:8080/WigWS/webresources/";
+    String url = "http://10.10.54.153:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -66,6 +67,7 @@ public class RetrofitConfig {
         Call<Avaliacao> listarAvaliacao();
 
         @POST("cliente/Avaliacao/Inserir")
+        @Headers("Content-Type: application/json")
         Call<Avaliacao> inserirAvaliacao(@Body Avaliacao avaliacao);
 
         @POST("cliente/Avaliacao/Responder")

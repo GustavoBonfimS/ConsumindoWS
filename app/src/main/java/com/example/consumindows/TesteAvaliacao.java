@@ -36,7 +36,7 @@ public class TesteAvaliacao extends AppCompatActivity {
         a.setIdcliente(1);
         a.setIdempresa(1);
 
-        final String[] resposta = new String[1];
+        final Avaliacao[] retorno = {null};
 
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +45,7 @@ public class TesteAvaliacao extends AppCompatActivity {
                 call.enqueue(new Callback<Avaliacao>() {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
-                        resposta[0] = response.body().toString();
+                        retorno[0] = response.body();
                     }
 
                     @Override
@@ -56,8 +56,8 @@ public class TesteAvaliacao extends AppCompatActivity {
             }
         });
 
-        if (resposta[0] != null) {
-            Toast.makeText(getBaseContext(), resposta[0], Toast.LENGTH_SHORT).show();
+        if (retorno[0] != null) {
+            Toast.makeText(getBaseContext(), "gravou com sucesso: " + retorno[0].getIdavaliacao(), Toast.LENGTH_SHORT).show();
         }
     }
 
