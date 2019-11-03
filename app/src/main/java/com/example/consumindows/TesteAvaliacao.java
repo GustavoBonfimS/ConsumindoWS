@@ -28,28 +28,33 @@ public class TesteAvaliacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_avaliacao);
-        EditText autor = findViewById(R.id.etAutor);
+        final EditText autor = findViewById(R.id.etAutor);
         Button btAvalia = findViewById(R.id.btAvaliacao);
-        EditText conteudo = findViewById(R.id.etConteudo);
+        final EditText conteudo = findViewById(R.id.etConteudo);
         final TextView resposta = findViewById(R.id.tvResposta);
-
         final Avaliacao a = new Avaliacao();
-        a.setAutor(autor.getText().toString());
-        a.setConteudo(conteudo.getText().toString());
-        a.setIdcliente(1);
-        a.setIdempresa(1);
-
-        final Avaliacao[] retorno = {null};
+        int r = 0;
 
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                a.setAutor(autor.getText().toString());
+                a.setConteudo(conteudo.getText().toString());
+                a.setIdcliente(1);
+                a.setIdempresa(1);
+
+                // excluir este, o id sera pego no onResponse
+                a.setIdavaliacao(1);
+
                 Call<Avaliacao> call = new RetrofitConfig().getWigService().inserirAvaliacao(a);
                 call.enqueue(new Callback<Avaliacao>() {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
+                        a.setIdavaliacao(response.body().getIdavaliacao());
 
-                        resposta.setText("sucesso");
+
+
                     }
 
                     @Override
@@ -57,12 +62,14 @@ public class TesteAvaliacao extends AppCompatActivity {
                         Log.e("Wig", "Erro ao fazer request");
                     }
                 });
-            }
+
+                if (a.getIdavaliacao() != 0) {
+                    Toast.makeText(getBaseContext(), "id= :" + a.getIdavaliacao(), Toast.LENGTH_SHORT).show();
+                }
+            } // onClick ends
         });
 
-        if (retorno[0] != null) {
-            Toast.makeText(getBaseContext(), "gravou com sucesso: " + retorno[0].getIdavaliacao(), Toast.LENGTH_SHORT).show();
-        }
+
     }
 
 }
