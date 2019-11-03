@@ -20,7 +20,7 @@ import retrofit2.Response;
 
 public class TesteAvaliacao extends AppCompatActivity {
 
-    public void TesteAvaliaco () {
+    public void TesteAvaliaco() {
         this.TesteAvaliaco();
     }
 
@@ -33,7 +33,6 @@ public class TesteAvaliacao extends AppCompatActivity {
         final EditText conteudo = findViewById(R.id.etConteudo);
         final TextView resposta = findViewById(R.id.tvResposta);
         final Avaliacao a = new Avaliacao();
-        int r = 0;
 
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,29 +43,24 @@ public class TesteAvaliacao extends AppCompatActivity {
                 a.setIdcliente(1);
                 a.setIdempresa(1);
 
-                // excluir este, o id sera pego no onResponse
-                a.setIdavaliacao(1);
-
                 Call<Avaliacao> call = new RetrofitConfig().getWigService().inserirAvaliacao(a);
                 call.enqueue(new Callback<Avaliacao>() {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
                         a.setIdavaliacao(response.body().getIdavaliacao());
-
-
-
+                        resposta.setText(response.body().toString());
                     }
 
                     @Override
                     public void onFailure(Call<Avaliacao> call, Throwable t) {
-                        Log.e("Wig", "Erro ao fazer request");
+                        Log.e("wig", "erro ao fazer request" + t.getMessage());
                     }
                 });
 
-                if (a.getIdavaliacao() != 0) {
-                    Toast.makeText(getBaseContext(), "id= :" + a.getIdavaliacao(), Toast.LENGTH_SHORT).show();
-                }
+
+                Toast.makeText(getBaseContext(), "id= :" + a.getIdavaliacao(), Toast.LENGTH_SHORT).show();
             } // onClick ends
+
         });
 
 
