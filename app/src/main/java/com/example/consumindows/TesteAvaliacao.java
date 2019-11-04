@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import modelo.Avaliacao;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -28,9 +26,9 @@ public class TesteAvaliacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_avaliacao);
-        final EditText autor = findViewById(R.id.etAutor);
-        Button btAvalia = findViewById(R.id.btAvaliacao);
-        final EditText conteudo = findViewById(R.id.etConteudo);
+        // final EditText autor = findViewById(R.id.etAutor);
+        Button btAvalia = findViewById(R.id.btnAvalia);
+        // final EditText conteudo = findViewById(R.id.etConteudo);
         final TextView resposta = findViewById(R.id.tvResposta);
         final Avaliacao a = new Avaliacao();
 
@@ -38,8 +36,8 @@ public class TesteAvaliacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                a.setAutor(autor.getText().toString());
-                a.setConteudo(conteudo.getText().toString());
+                //a.setAutor(autor.getText().toString());
+                //a.setConteudo(conteudo.getText().toString());
                 a.setIdcliente(1);
                 a.setIdempresa(1);
 
