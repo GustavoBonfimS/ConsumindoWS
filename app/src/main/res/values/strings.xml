@@ -5,4 +5,8 @@
     <string name="login">Login</string>
     <string name="senha">Senha</string>
     <string name="fazer_login">Fazer login</string>
+    <string name="email">email</string>
+    <string name="cpf">CPF</string>
+    <string name="cadastrar_usuario">Cadastrar Usuario</string>
+    <string name="button">Button</string>
 </resources>
