@@ -27,7 +27,7 @@ public class TesteAvaliacao extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_avaliacao);
         // final EditText autor = findViewById(R.id.etAutor);
-        Button btAvalia = findViewById(R.id.btnAvalia);
+        Button btAvalia = findViewById(R.id.btAvaliacao);
         // final EditText conteudo = findViewById(R.id.etConteudo);
         final TextView resposta = findViewById(R.id.tvResposta);
         final Avaliacao a = new Avaliacao();

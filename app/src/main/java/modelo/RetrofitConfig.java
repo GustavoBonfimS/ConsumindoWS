@@ -11,7 +11,6 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -20,7 +19,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://192.168.0.29:8080/WigWS/webresources/";
+    String url = "http://10.10.54.89:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
