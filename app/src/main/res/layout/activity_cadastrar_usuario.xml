@@ -1,62 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".CadastrarUsuario"
     android:padding="30dp"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    tools:context=".CadastrarUsuario">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastro de usuario"
         android:layout_marginTop="15dp"
+        android:text="Cadastro de usuario"
         android:textSize="32sp" />
 
     <EditText
         android:id="@+id/etLogin"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="@string/login" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/login"
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/etSenha"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:hint="@string/senha" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/senha"
+        android:inputType="textPassword" />
 
     <EditText
         android:id="@+id/etEmail"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:hint="@string/email" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/etCPF"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="50dp"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:inputType="text"
-        android:hint="@string/cpf" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:hint="@string/cpf"
+        android:inputType="number" />
 
     <Button
         android:id="@+id/btnCadastrar"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Cadastrar" />
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/cadastrar" />
+
+    <TextView
+        android:id="@+id/tvCadastro"
+        android:layout_width="353dp"
+        android:layout_height="159dp" />
 
 
 </LinearLayout>

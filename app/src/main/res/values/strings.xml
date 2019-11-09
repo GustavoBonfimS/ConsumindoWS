@@ -9,4 +9,5 @@
     <string name="cpf">CPF</string>
     <string name="cadastrar_usuario">Cadastrar Usuario</string>
     <string name="button">Button</string>
+    <string name="cadastrar">Cadastrar</string>
 </resources>

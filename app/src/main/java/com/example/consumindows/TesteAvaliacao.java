@@ -36,6 +36,7 @@ public class TesteAvaliacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 //a.setAutor(autor.getText().toString());
                 //a.setConteudo(conteudo.getText().toString());
                 a.setIdcliente(1);
