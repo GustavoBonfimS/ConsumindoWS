@@ -26,7 +26,7 @@
         android:layout_marginBottom="28dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/login"
+        android:hint="@string/login"
         app:layout_constraintBottom_toTopOf="@+id/etSenha"
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
@@ -37,8 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="68dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/senha"
+        android:inputType="textPassword"
+        android:hint="@string/senha"
         app:layout_constraintBottom_toTopOf="@+id/btnLogin"
         app:layout_constraintStart_toStartOf="@+id/etLogin"
         app:layout_constraintTop_toBottomOf="@+id/etLogin" />
@@ -60,7 +60,7 @@
         android:layout_height="157dp"
         android:layout_marginStart="5dp"
         android:layout_marginBottom="170dp"
-        android:text="status"
+        android:text=""
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/btnLogin"

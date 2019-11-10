@@ -19,7 +19,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.140:8080/WigWS/webresources/";
+    String url = "http://192.168.0.29:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -35,22 +35,22 @@ public class RetrofitConfig {
     public interface WigService {
 
         @GET("usuario/get/{login}")
-        Call<Usuario> buscarUsuario(@Path("login") String login);
+        Call<Usuario> buscarUsuario(@Path("login") String login); // admin
 
         @GET("usuario/login/{login}/{senha}")
         Call<String> validarLogin(@Path("login") String login, @Path("senha") String senha);
 
         @GET("usuario/Listar")
-        Call<Usuario> listarUsuario();
+        Call<Usuario> listarUsuario(); // não precisa // admin
 
         @DELETE("usuario/Excluir/{login}")
-        Call<Usuario> excluirUsuario(@Path("login") String login);
+        Call<Usuario> excluirUsuario(@Path("login") String login); // admin
 
         @POST("usuario/Cadastrar")
         @Headers("Content-Type: application/json")
-        Call<Usuario> cadastrarUsuario(Cliente cliente);
+        Call<Usuario> cadastrarUsuario(Cliente cliente); // admin
 
-        @PUT("usuario/Alterar")
+        @PUT("usuario/Alterar") //dmin
         Call<Usuario> alterarUsuario(@Path("login") String login, @Path("senha") String senha);
 
 
