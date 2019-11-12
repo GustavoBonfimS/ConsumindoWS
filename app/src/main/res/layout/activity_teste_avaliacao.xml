@@ -24,7 +24,7 @@
         android:layout_marginBottom="29dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Autor"
+        android:hint="autor"
         app:layout_constraintBottom_toTopOf="@+id/etConteudo"
         app:layout_constraintStart_toStartOf="@+id/textView4"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -36,7 +36,7 @@
         android:layout_marginBottom="97dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Conteudo"
+        android:hint="conteudo"
         app:layout_constraintBottom_toTopOf="@+id/btAvaliacao"
         app:layout_constraintStart_toStartOf="@+id/etAutor"
         app:layout_constraintTop_toBottomOf="@+id/etAutor" />

@@ -3,6 +3,7 @@ package modelo;
 import android.app.DownloadManager;
 
 import java.net.ContentHandler;
+import java.util.List;
 
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -19,7 +20,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://192.168.0.29:8080/WigWS/webresources/";
+    String url = "http://10.10.54.214:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -60,7 +61,7 @@ public class RetrofitConfig {
         Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
         @GET("cliente/Listar")
-        Call<Cliente> listarCliente();
+        Call<List<Cliente>> listarCliente();
 
         //---------------------------------Avaliação------------------------------------------
 

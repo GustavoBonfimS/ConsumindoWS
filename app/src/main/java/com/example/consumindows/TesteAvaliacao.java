@@ -10,6 +10,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.sql.Date;
+import java.sql.Time;
+
 import modelo.Avaliacao;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -26,9 +29,9 @@ public class TesteAvaliacao extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teste_avaliacao);
-        // final EditText autor = findViewById(R.id.etAutor);
+        final EditText autor = findViewById(R.id.etAutor);
         Button btAvalia = findViewById(R.id.btAvaliacao);
-        // final EditText conteudo = findViewById(R.id.etConteudo);
+        final EditText conteudo = findViewById(R.id.etConteudo);
         final TextView resposta = findViewById(R.id.tvResposta);
         final Avaliacao a = new Avaliacao();
 
@@ -37,10 +40,19 @@ public class TesteAvaliacao extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                //a.setAutor(autor.getText().toString());
-                //a.setConteudo(conteudo.getText().toString());
-                a.setIdcliente(1);
-                a.setIdempresa(1);
+                a.setAutor(autor.getText().toString());
+                a.setConteudo(conteudo.getText().toString());
+                a.setIdcliente(1); // sera inserido o id do cliente que fez o login
+                a.setIdempresa(1); // sera inserido o id da empresa que for selecionada
+
+                // pega data atual do sistema
+                java.util.Date dataUtil = new java.util.Date();
+                Date data = new Date(dataUtil.getTime());
+                a.setData(data);
+
+                // pegar hora atual do sistema;
+                Time hora = new Time(dataUtil.getTime());
+                a.setHora(hora);
 
                 Call<Avaliacao> call = new RetrofitConfig().getWigService().inserirAvaliacao(a);
                 call.enqueue(new Callback<Avaliacao>() {
@@ -48,6 +60,9 @@ public class TesteAvaliacao extends AppCompatActivity {
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
                         a.setIdavaliacao(response.body().getIdavaliacao());
                         resposta.setText(response.body().toString());
+                        Log.e("wig", "id= " + response.body().getIdavaliacao());
+                        Toast.makeText(TesteAvaliacao.this, "id= " + response.body().getIdavaliacao(),
+                                Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -57,7 +72,7 @@ public class TesteAvaliacao extends AppCompatActivity {
                 });
 
 
-                Toast.makeText(getBaseContext(), "id= :" + a.getIdavaliacao(), Toast.LENGTH_SHORT).show();
+                // Toast.makeText(getBaseContext(), "id= :" + a.getIdavaliacao(), Toast.LENGTH_SHORT).show();
             } // onClick ends
 
         });
