@@ -1,68 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".loginActivity">
+    android:background="#F0F8FF"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
-        android:layout_marginBottom="70dp"
-        android:text="@string/tela_de_login"
-        android:textSize="36sp"
-        app:layout_constraintBottom_toTopOf="@+id/etLogin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="260dp"
+        android:layout_height="269dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="75dp"
+        app:srcCompat="@drawable/wig_logo" />
 
     <EditText
         android:id="@+id/etLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="275dp"
+        android:layout_marginEnd="80dp"
+        android:background="#8BFF9800"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:gravity="center"
         android:hint="@string/login"
-        app:layout_constraintBottom_toTopOf="@+id/etSenha"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        android:importantForAutofill="no"
+        android:inputType="textPersonName"
+        android:textSize="16sp" />
 
     <EditText
         android:id="@+id/etSenha"
+        android:layout_width="250dp"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="329dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginBottom="223dp"
+        android:autofillHints=""
+        android:background="#8BFF9800"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/senha"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:id="@+id/textCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:hint="@string/senha"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
-        app:layout_constraintStart_toStartOf="@+id/etLogin"
-        app:layout_constraintTop_toBottomOf="@+id/etLogin" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="152dp"
+        android:layout_marginBottom="88dp"
+        android:text="@string/cadastrar_se"
+        android:textColor="#000000	"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
-        android:layout_marginBottom="62dp"
-        android:text="@string/fazer_login"
-        app:layout_constraintBottom_toTopOf="@+id/tvStatus"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etSenha" />
-
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="185dp"
-        android:layout_height="157dp"
-        android:layout_marginStart="5dp"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginEnd="65dp"
         android:layout_marginBottom="170dp"
-        android:text=""
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/btnLogin"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+
+        android:text="login"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+
+</RelativeLayout>

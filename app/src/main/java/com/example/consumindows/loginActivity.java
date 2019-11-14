@@ -26,8 +26,8 @@ public class loginActivity extends AppCompatActivity {
         final EditText login = findViewById(R.id.etLogin);
         final EditText senha = findViewById(R.id.etSenha);
 
-        final TextView status = findViewById(R.id.tvStatus);
         final Button btnLogin = findViewById(R.id.btnLogin);
+
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,5 +60,7 @@ public class loginActivity extends AppCompatActivity {
                 });
             }
         });
+
+
     }
 }
