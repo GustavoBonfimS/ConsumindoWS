@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import modelo.RetrofitConfig;
 import modelo.Usuario;
@@ -50,12 +51,15 @@ public class loginActivity extends AppCompatActivity {
 
                             telaMainTeste.putExtras(param);
                             startActivity(telaMainTeste);
+                        } else {
+                            Toast.makeText(loginActivity.this, "Nome de usuairo ou senha icnorretos",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<String> call, Throwable t) {
-                        Log.e("wig", "erro ao validar logi");
+                        Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
                     }
                 });
             }
