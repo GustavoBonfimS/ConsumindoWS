@@ -28,7 +28,7 @@ public class loginActivity extends AppCompatActivity {
         final EditText senha = findViewById(R.id.etSenha);
 
         final Button btnLogin = findViewById(R.id.btnLogin);
-
+        final TextView cadastrar = findViewById(R.id.tvCadastrar);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +37,8 @@ public class loginActivity extends AppCompatActivity {
                 u.setLogin(login.getText().toString());
                 u.setSenha(senha.getText().toString());
 
-                Call<String> call = new RetrofitConfig().getWigService().validarLogin(login.getText().toString()
+                Call<String> call = new RetrofitConfig().getWigService()
+                        .validarLogin(login.getText().toString()
                         , senha.getText().toString());
                 call.enqueue(new Callback<String>() {
                     @Override
@@ -64,7 +65,16 @@ public class loginActivity extends AppCompatActivity {
                 });
             }
         });
+        cadastrar.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                Intent telaCadastro = new Intent(loginActivity.this, CadastrarUsuario.class);
+                startActivity(telaCadastro);
+            }
+        });
 
     }
+
+
 }
