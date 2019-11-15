@@ -12,11 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".testeIntente"></activity>
-        <activity android:name=".CadastrarUsuario"></activity>
-        <activity android:name=".TesteAvaliacao">
-
-        </activity>
+        <activity
+            android:name=".Index"
+            android:label="@string/title_activity_index"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".testeIntente" />
+        <activity android:name=".CadastrarUsuario" />
+        <activity android:name=".TesteAvaliacao"></activity>
         <activity android:name=".loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
