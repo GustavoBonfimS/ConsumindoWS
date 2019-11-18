@@ -25,7 +25,7 @@ public class CadastrarUsuario extends AppCompatActivity {
 
         final Button btncadastrar = findViewById(R.id.btnCadastrar);
         final EditText email = findViewById(R.id.etEmail);
-        final EditText login = findViewById(R.id.etLogin);
+        final EditText login = findViewById(R.id.etavaliacao);
         final EditText senha = findViewById(R.id.etSenha);
         final EditText cpf = findViewById(R.id.etCPF);
         final TextView testeResposta = findViewById(R.id.tvCadastro);

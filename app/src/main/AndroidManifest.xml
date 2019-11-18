@@ -12,13 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".CadastrocomLayout"></activity>
+        <activity android:name=".telaEmpresa" />
         <activity
             android:name=".Index"
             android:label="@string/title_activity_index"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".testeIntente" />
         <activity android:name=".CadastrarUsuario" />
-        <activity android:name=".TesteAvaliacao"></activity>
+        <activity android:name=".TesteAvaliacao" />
         <activity android:name=".loginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
