@@ -25,7 +25,7 @@ public class loginActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // esconde barra de titulo
         setContentView(R.layout.activity_login);
 
-        final EditText login = findViewById(R.id.etLogin);
+        final EditText login = findViewById(R.id.etavaliacao);
         final EditText senha = findViewById(R.id.etSenha);
 
         final Button btnLogin = findViewById(R.id.btnLogin);

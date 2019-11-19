@@ -15,7 +15,7 @@
         android:textSize="32sp" />
 
     <EditText
-        android:id="@+id/etLogin"
+        android:id="@+id/etavaliacao"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
