@@ -22,6 +22,7 @@ public class loginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // esconde barra de titulo
         setContentView(R.layout.activity_login);
 
         final EditText login = findViewById(R.id.etLogin);

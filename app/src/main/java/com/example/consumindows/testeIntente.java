@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -24,12 +25,13 @@ public class testeIntente extends AppCompatActivity {
         setContentView(R.layout.activity_teste_intente);
 
         Intent i = getIntent();
-        Bundle b = new Bundle();
+        Bundle b;
         b = i.getExtras();
         final TextView tvParam = findViewById(R.id.tvParam);
         final TextView tvLista = findViewById(R.id.tvLista);
 
-        tvParam.setText("Ola " + b.getString("login"));
+        tvParam.setText("Ola " + b.getString("login")); // se vier da tela de login
+        tvParam.setText("Ola " + b.getInt("id")); // se vier da tela de cadastro
 
         Call<List<Cliente>> call = new RetrofitConfig().getWigService().listarCliente();
         call.enqueue(new Callback<List<Cliente>>() {
@@ -37,6 +39,8 @@ public class testeIntente extends AppCompatActivity {
             public void onResponse(Call<List<Cliente>> call, Response<List<Cliente>> response) {
                 List<Cliente> lista = response.body();
                 tvLista.setText(lista.toString());
+                String login = lista.get(1).getLogin();
+                Log.e("wig", "login: " + login);
             }
 
             @Override

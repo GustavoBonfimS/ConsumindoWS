@@ -2,6 +2,7 @@ package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // esconder barra de titulo
         setContentView(R.layout.activity_cadastrar_usuario);
 
         final Button btncadastrar = findViewById(R.id.btnCadastrar);
@@ -46,9 +48,18 @@ public class CadastrarUsuario extends AppCompatActivity {
                     public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                         if (response.body() != null) {
                             Cliente res = response.body();
-                            c.setIdusuario(res.getIdusuario());
-                            testeResposta.setText("sucesso !" + res.getIdcliente());
-                            Log.e("wig", "id= " + res.getIdcliente());
+                            Log.i("wig", "id= " + res.getIdcliente());
+
+                            // após cadastro jogar pra index
+                            Intent telaIndex = new Intent(CadastrarUsuario.this, testeIntente.class);
+                            Bundle param = new Bundle();
+                            param.putInt("id", res.getIdcliente());
+                            telaIndex.putExtras(param);
+                            startActivity(telaIndex);
+                        } else {
+                            // se der erro no cadastro
+                            Toast.makeText(CadastrarUsuario.this, "Erro ao cadastrar",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
 
