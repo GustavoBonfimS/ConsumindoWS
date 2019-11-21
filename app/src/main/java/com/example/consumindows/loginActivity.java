@@ -69,7 +69,7 @@ public class loginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent telaCadastro = new Intent(loginActivity.this, CadastrarUsuario.class);
+                Intent telaCadastro = new Intent(loginActivity.this, Index.class);
                 startActivity(telaCadastro);
             }
         });
