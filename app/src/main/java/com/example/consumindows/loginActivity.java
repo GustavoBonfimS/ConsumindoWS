@@ -32,7 +32,7 @@ public class loginActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // esconde barra de titulo
         setContentView(R.layout.activity_login);
 
-        etLogin = findViewById(R.id.etavaliacao);
+        etLogin = findViewById(R.id.etLogin);
         etSenha = findViewById(R.id.etSenha);
 
         final Button btnLogin = findViewById(R.id.btnLogin);
@@ -72,7 +72,7 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        // click no text ode cadastrar-se
+        // click no texto de cadastrar-se
         cadastrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
