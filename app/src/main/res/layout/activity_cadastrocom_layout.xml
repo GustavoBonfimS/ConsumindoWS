@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F8FF"
+    android:background="@color/background"
     tools:context=".CadastrarUsuario">
 
 
@@ -21,97 +21,86 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wig_logo"
-        tools:srcCompat="@drawable/wigorange" />
+        app:srcCompat="@drawable/wig_logo" />
 
 
     <EditText
-        android:id="@+id/textEmailCad"
+        android:id="@+id/etEmail"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
         android:layout_width="255dp"
-        android:layout_height="0dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="276dp"
-        android:layout_marginBottom="32dp"
         android:background="#8BFF9800"
         android:drawableStart="@drawable/ic_email_black_24dp"
         android:ems="10"
-        android:hint="Email"
+        android:hint="@string/email"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textUserCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteY="276dp" />
 
     <EditText
-        android:id="@+id/textUserCad"
+        android:id="@+id/etLogin"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="76dp"
-        android:layout_marginBottom="36dp"
         android:background="#8BFF9800"
         android:drawableStart="@drawable/icon_action_username"
         android:ems="10"
-        android:hint="Username"
+        android:hint="@string/login"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/textPasswordCad"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textEmailCad" />
+        tools:layout_editor_absoluteY="338dp" />
 
     <EditText
-        android:id="@+id/textPasswordCad"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:id="@+id/etSenha"
+        android:layout_width="200dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="31dp"
         android:autofillHints=""
         android:background="#8BFF9800"
         android:drawableStart="@drawable/icon_action_password"
         android:ems="10"
-        android:hint="Password"
+        android:hint="@string/senha"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/textCpfCad"
-        app:layout_constraintEnd_toEndOf="@+id/textCpfCad"
-        app:layout_constraintStart_toStartOf="@+id/textCpfCad"
-        app:layout_constraintTop_toBottomOf="@+id/textUserCad" />
+        tools:layout_editor_absoluteX="76dp"
+        tools:layout_editor_absoluteY="404dp" />
 
     <EditText
-        android:id="@+id/textCpfCad"
+        android:id="@+id/etCPF"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
         android:layout_width="200dp"
-        android:layout_height="0dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginStart="76dp"
-        android:layout_marginBottom="92dp"
         android:background="#8BFF9800"
         android:ems="10"
-        android:hint="CPF"
+        android:hint="@string/cpf"
         android:importantForAutofill="no"
         android:inputType="textPersonName"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/btcadastro"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPasswordCad" />
+        tools:layout_editor_absoluteY="465dp" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/btcadastro"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="46dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -127,7 +116,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textCpfCad"
         tools:targetApi="o">
 
 

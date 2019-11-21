@@ -1,16 +1,20 @@
 package com.example.consumindows;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import modelo.Cliente;
 import modelo.RetrofitConfig;
 import modelo.Usuario;
 import retrofit2.Call;
@@ -19,13 +23,17 @@ import retrofit2.Response;
 
 public class loginActivity extends AppCompatActivity {
 
+    private EditText etLogin;
+    private EditText etSenha;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // esconde barra de titulo
         setContentView(R.layout.activity_login);
 
-        final EditText login = findViewById(R.id.etavaliacao);
-        final EditText senha = findViewById(R.id.etSenha);
+        etLogin = findViewById(R.id.etavaliacao);
+        etSenha = findViewById(R.id.etSenha);
 
         final Button btnLogin = findViewById(R.id.btnLogin);
         final TextView cadastrar = findViewById(R.id.tvCadastrar);
@@ -33,13 +41,11 @@ public class loginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Usuario u = new Usuario();
-                u.setLogin(login.getText().toString());
-                u.setSenha(senha.getText().toString());
+                validaCampos();
 
                 Call<String> call = new RetrofitConfig().getWigService()
-                        .validarLogin(login.getText().toString()
-                        , senha.getText().toString());
+                        .validarLogin(etLogin.getText().toString()
+                        , etSenha.getText().toString());
                 call.enqueue(new Callback<String>() {
                     @Override
                     public void onResponse(Call<String> call, Response<String> response) {
@@ -48,7 +54,7 @@ public class loginActivity extends AppCompatActivity {
                         if (response.body().equals("true")) {
                             Intent telaMainTeste = new Intent(loginActivity.this, testeIntente.class);
                             Bundle param = new Bundle();
-                            param.putString("login", login.getText().toString());
+                            param.putString("login", etLogin.getText().toString());
 
                             telaMainTeste.putExtras(param);
                             startActivity(telaMainTeste);
@@ -65,6 +71,8 @@ public class loginActivity extends AppCompatActivity {
                 });
             }
         });
+
+        // click no text ode cadastrar-se
         cadastrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -76,5 +84,35 @@ public class loginActivity extends AppCompatActivity {
 
     }
 
+    private void validaCampos() {
+        boolean res = false;
+        String login = etLogin.getText().toString();
+        String senha = etSenha.getText().toString();
+
+        if (res = isCampoVazio(login)) {
+            etLogin.requestFocus();
+        } else if (res = isCampoVazio(senha)) {
+            etSenha.requestFocus();
+        }
+
+        if (res) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle("Aviso");
+            dlg.setMessage("Há campos vazios ou em branco");
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
+        }
+    }
+
+    private boolean isCampoVazio (String valor) {
+        boolean resultado = (TextUtils.isEmpty(valor)) || valor.trim().isEmpty();
+        return resultado;
+    }
+
+    // sera usado na classe de cadastro
+    private boolean isEmailValido (String email) {
+        boolean resultado = (!isCampoVazio(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+        return resultado;
+    }
 
 }
