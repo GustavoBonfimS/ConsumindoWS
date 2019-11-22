@@ -1,8 +1,6 @@
 package com.example.consumindows;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,10 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import modelo.Cliente;
 import modelo.RetrofitConfig;
-import modelo.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -77,7 +72,7 @@ public class loginActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent telaCadastro = new Intent(loginActivity.this, CadastrarUsuario.class);
+                Intent telaCadastro = new Intent(loginActivity.this, CadastrocomLayout.class);
                 startActivity(telaCadastro);
             }
         });
