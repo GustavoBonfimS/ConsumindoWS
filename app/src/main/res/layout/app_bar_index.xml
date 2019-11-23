@@ -18,16 +18,6 @@
             android:background="@color/dodgeBlue"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-        <EditText
-            android:id="@+id/EtPesquisar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/dodgeBlue"
-            android:drawableLeft="@android:drawable/ic_search_category_default"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Pesquisar" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_index" />
