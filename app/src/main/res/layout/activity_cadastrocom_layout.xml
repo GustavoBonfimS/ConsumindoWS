@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".CadastrarUsuario">
+    tools:context=".CadastrocomLayout">
 
 
     <ImageView
@@ -98,7 +98,7 @@
         tools:layout_editor_absoluteY="465dp" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/btcadastro"
+        android:id="@+id/btnCadastrar"
         android:layout_width="0dp"
         android:layout_height="46dp"
         android:layout_alignParentStart="true"

@@ -1,8 +1,6 @@
 package com.example.consumindows;
-
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,10 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import modelo.Cliente;
 import modelo.RetrofitConfig;
-import modelo.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -32,7 +27,7 @@ public class loginActivity extends AppCompatActivity {
         getSupportActionBar().hide(); // esconde barra de titulo
         setContentView(R.layout.activity_login);
 
-        etLogin = findViewById(R.id.etavaliacao);
+        etLogin = findViewById(R.id.etLogin);
         etSenha = findViewById(R.id.etSenha);
 
         final Button btnLogin = findViewById(R.id.btnLogin);
@@ -72,12 +67,12 @@ public class loginActivity extends AppCompatActivity {
             }
         });
 
-        // click no text ode cadastrar-se
+        // click no texto de cadastrar-se
         cadastrar.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent telaCadastro = new Intent(loginActivity.this, Index.class);
+                Intent telaCadastro = new Intent(loginActivity.this, CadastrocomLayout.class);
                 startActivity(telaCadastro);
             }
         });
