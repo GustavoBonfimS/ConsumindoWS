@@ -42,11 +42,12 @@ public class testeIntente extends AppCompatActivity {
                 tvLista.setText(lista.get(1).getLogin());
                 String login = lista.get(1).getLogin();
                 Log.e("wig", "login: " + login);
+
             }
 
             @Override
             public void onFailure(Call<List<Cliente>> call, Throwable t) {
-
+                Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
             }
         });
 

@@ -10,21 +10,16 @@
         android:id="@+id/tvParam"
         android:layout_width="169dp"
         android:layout_height="37dp"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="124dp"
-        android:text="Tela INDEX"
+        android:text="teste list"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:layout_editor_absoluteX="120dp"
+        tools:layout_editor_absoluteY="124dp" />
 
-    <TextView
-        android:id="@+id/tvLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="88dp"
-        android:text="lista"
-        android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvParam" />
+    <ListView
+        android:id="@+id/lvLista"
+        android:layout_width="409dp"
+        android:layout_height="568dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="162dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

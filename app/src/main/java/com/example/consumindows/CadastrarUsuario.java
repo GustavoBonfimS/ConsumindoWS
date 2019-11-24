@@ -39,7 +39,7 @@ public class CadastrarUsuario extends AppCompatActivity {
                 // validar campos
 
                 c.setEmail(email.getText().toString());
-                c.setCPF(cpf.getInputType());
+                c.setCPF(cpf.getText().toString());
                 c.setLogin(login.getText().toString());
                 c.setSenha(senha.getText().toString());
 
