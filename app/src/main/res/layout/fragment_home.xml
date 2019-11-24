@@ -12,10 +12,18 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="#DAEEF3"
+            app:srcCompat="@drawable/wig_logo2" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/CardView1"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:background="#D3B8B8">
 
             <ImageView
                 android:id="@+id/imageView2"
@@ -54,10 +62,17 @@
                 app:layout_constraintVertical_bias="0.737" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/inutilizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DAEEF3"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView2"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:background="#ACC9E4">
 
             <ImageView
                 android:id="@+id/imageView4"
@@ -98,10 +113,17 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <Button
+            android:id="@+id/inutilizado2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DAEEF3"/>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cardView3"
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:background="#ECE496">
 
             <ImageView
                 android:id="@+id/imageView5"
