@@ -20,7 +20,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://192.168.0.43:8080/WigWS/webresources/";
+    String url = "http://192.168.0.31:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -72,7 +72,7 @@ public class RetrofitConfig {
         //---------------------------------Avaliação------------------------------------------
 
         @GET("cliente/Avaliacao/Listar")
-        Call<Avaliacao> listarAvaliacao();
+        Call<List<Avaliacao>> listarAvaliacao();
 
         @POST("cliente/Avaliacao/Inserir")
         @Headers("Content-Type: application/json")

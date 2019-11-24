@@ -59,8 +59,6 @@ public class TesteAvaliacao extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
                         a.setIdavaliacao(response.body().getIdavaliacao());
-                        resposta.setText(response.body().toString());
-                        Log.e("wig", "id= " + response.body().getIdavaliacao());
                         Toast.makeText(TesteAvaliacao.this, "id= " + response.body().getIdavaliacao(),
                                 Toast.LENGTH_SHORT).show();
                     }

@@ -28,7 +28,7 @@ public class testeIntente extends AppCompatActivity {
         Bundle b;
         b = i.getExtras();
         final TextView tvParam = findViewById(R.id.tvParam);
-        final TextView tvLista = findViewById(R.id.tvLista);
+       // final TextView tvLista = findViewById(R.id.tvLista);
 
         // tvParam.setText("Ola " + b.getString("login")); // se vier da tela de login
         // tvParam.setText("Ola " + b.getInt("id")); // se vier da tela de cadastro
@@ -38,8 +38,8 @@ public class testeIntente extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Cliente>> call, Response<List<Cliente>> response) {
                 List<Cliente> lista = response.body();
-                assert lista != null;
-                tvLista.setText(lista.get(1).getLogin());
+                // assert lista != null;
+                //tvLista.setText(lista.get(1).getLogin());
                 String login = lista.get(1).getLogin();
                 Log.e("wig", "login: " + login);
 

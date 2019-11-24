@@ -22,7 +22,17 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
+import java.sql.Date;
+import java.util.List;
+
+import modelo.Avaliacao;
+import modelo.RetrofitConfig;
+import retrofit2.Call;
+
 public class Index extends AppCompatActivity {
+
+    private Date lastCheck; // variavel que guarda ultima verificação no ws
+    private Date dataAtual;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -36,7 +46,7 @@ public class Index extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent telaIntesteTeste = new Intent(Index.this, testeIntente.class);
+                Intent telaIntesteTeste = new Intent(Index.this, TesteAvaliacao.class);
                 startActivity(telaIntesteTeste);
             }
         });
@@ -53,6 +63,12 @@ public class Index extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
+        // pega data atual do sistema
+        java.util.Date dataUtil = new java.util.Date();
+        dataAtual = new Date(dataUtil.getTime());
+        // aqui vai o metodo do ws de buscar entre datas
+        // dentro do onResponse do metodo sera setado os textos dos cardView
 
 
     }
