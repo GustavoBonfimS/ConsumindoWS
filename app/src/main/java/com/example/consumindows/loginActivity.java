@@ -36,34 +36,35 @@ public class loginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validaCampos();
+                if (!validaCampos()) {
 
-                Call<String> call = new RetrofitConfig().getWigService()
-                        .validarLogin(etLogin.getText().toString()
-                        , etSenha.getText().toString());
-                call.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        // status.setText(response.body());
+                    Call<String> call = new RetrofitConfig().getWigService()
+                            .validarLogin(etLogin.getText().toString()
+                                    , etSenha.getText().toString());
+                    call.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
 
-                        if (response.body().equals("true")) {
-                            Intent telaMainTeste = new Intent(loginActivity.this, testeIntente.class);
-                            Bundle param = new Bundle();
-                            param.putString("login", etLogin.getText().toString());
+                            if (response.body().equals("true") && response.isSuccessful()) {
+                                Intent telaIndex = new Intent(loginActivity.this, Index.class);
+                                Bundle param = new Bundle();
+                                param.putString("login", etLogin.getText().toString());
+                                // passando login para outra tela
 
-                            telaMainTeste.putExtras(param);
-                            startActivity(telaMainTeste);
-                        } else {
-                            Toast.makeText(loginActivity.this, "Nome de usuairo ou senha icnorretos",
-                                    Toast.LENGTH_SHORT).show();
+                                telaIndex.putExtras(param);
+                                startActivity(telaIndex);
+                            } else {
+                                Toast.makeText(loginActivity.this, "Nome de usuairo ou senha icnorretos",
+                                        Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
-                    }
-                });
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
+                        }
+                    });
+                }
             }
         });
 
@@ -79,8 +80,8 @@ public class loginActivity extends AppCompatActivity {
 
     }
 
-    private void validaCampos() {
-        boolean res = false;
+    private boolean validaCampos() {
+        boolean res = false; // false = campo não vazio
         String login = etLogin.getText().toString();
         String senha = etSenha.getText().toString();
 
@@ -97,6 +98,7 @@ public class loginActivity extends AppCompatActivity {
             dlg.setNeutralButton("OK", null);
             dlg.show();
         }
+        return res;
     }
 
     private boolean isCampoVazio (String valor) {
