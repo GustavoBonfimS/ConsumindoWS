@@ -3,6 +3,7 @@ package modelo;
 import android.app.DownloadManager;
 
 import java.net.ContentHandler;
+import java.sql.Date;
 import java.util.List;
 
 import okhttp3.Request;
@@ -68,6 +69,10 @@ public class RetrofitConfig {
         @PUT("cliente/Alterar")
         @Headers("Content-Type: application/json")
         Call<Cliente> alterar (@Body Cliente cliente);
+
+        @GET("cliente/atualizarIndex/{lastCheck}")
+        @Headers("Content-Type: application/json")
+        Call<List<Avaliacao>> atualizarIndex (@Path("lastCheck") Date lastCheck);
 
         //---------------------------------Avaliação------------------------------------------
 

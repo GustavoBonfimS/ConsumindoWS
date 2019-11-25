@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.navigation.NavController;
@@ -28,11 +29,13 @@ import java.util.List;
 import modelo.Avaliacao;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Index extends AppCompatActivity {
 
     private Date lastCheck; // variavel que guarda ultima verificação no ws
-    private Date dataAtual;
+    // private Date dataAtual;
 
     private AppBarConfiguration mAppBarConfiguration;
 
@@ -65,10 +68,22 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
 
         // pega data atual do sistema
-        java.util.Date dataUtil = new java.util.Date();
-        dataAtual = new Date(dataUtil.getTime());
-        // aqui vai o metodo do ws de buscar entre datas
-        // dentro do onResponse do metodo sera setado os textos dos cardView
+        //java.util.Date dataUtil = new java.util.Date();
+        // dataAtual = new Date(dataUtil.getTime());
+
+        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(lastCheck);
+        call.enqueue(new Callback<List<Avaliacao>>() {
+            @Override
+            public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                // setar texto dos textView
+            }
+
+            @Override
+            public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                Log.e("wig", "erro ao fazer request" + t.getMessage());
+            }
+        });
+
 
 
     }
