@@ -3,6 +3,7 @@ package modelo;
 import android.app.DownloadManager;
 
 import java.net.ContentHandler;
+import java.sql.Date;
 import java.util.List;
 
 import okhttp3.Request;
@@ -20,7 +21,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.214:8080/WigWS/webresources/";
+    String url = "http://10.10.54.98:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -34,6 +35,8 @@ public class RetrofitConfig {
     }
 
     public interface WigService {
+
+        //---------------------------------Usuario-----------------------------------
 
         @GET("usuario/get/{login}")
         Call<Usuario> buscarUsuario(@Path("login") String login); // admin
@@ -49,10 +52,10 @@ public class RetrofitConfig {
 
         @POST("usuario/Cadastrar")
         @Headers("Content-Type: application/json")
-        Call<Usuario> cadastrarUsuario(Cliente cliente); // admin
+        Call<Usuario> cadastrarUsuario(@Body Usuario usuario); // admin
 
-        @PUT("usuario/Alterar") //dmin
-        Call<Usuario> alterarUsuario(@Path("login") String login, @Path("senha") String senha);
+        @PUT("usuario/Alterar") //admin
+        Call<Usuario> alterarUsuario(@Body Usuario usuario);
 
 
         //---------------------------------Cliente-----------------------------------
@@ -61,12 +64,21 @@ public class RetrofitConfig {
         Call<Cliente> cadastrarCliente(@Body Cliente cliente);
 
         @GET("cliente/Listar")
+        @Headers("Content-Type: application/json")
         Call<List<Cliente>> listarCliente();
+
+        @PUT("cliente/Alterar")
+        @Headers("Content-Type: application/json")
+        Call<Cliente> alterar (@Body Cliente cliente);
+
+        @GET("cliente/atualizarIndex/{lastCheck}")
+        @Headers("Content-Type: application/json")
+        Call<List<Avaliacao>> atualizarIndex (@Path("lastCheck") Date lastCheck);
 
         //---------------------------------Avaliação------------------------------------------
 
         @GET("cliente/Avaliacao/Listar")
-        Call<Avaliacao> listarAvaliacao();
+        Call<List<Avaliacao>> listarAvaliacao();
 
         @POST("cliente/Avaliacao/Inserir")
         @Headers("Content-Type: application/json")
@@ -75,6 +87,26 @@ public class RetrofitConfig {
         @POST("cliente/Avaliacao/Responder")
         @Headers("Content-Type: application/json")
         Call<Avaliacao> responderAvaliacao(@Body Avaliacao avaliacao);
+
+        @GET("cliente/Avaliacao/get/{conteudo}")
+        @Headers("Content-Type: application/json")
+        Call<Avaliacao> getAvaliacao(@Path("conteudo") String conteudo);
+
+        //---------------------------------Empresa------------------------------------------
+
+        @POST("empresa/Inserir")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> inserirEmpresa(@Body Empresa empresa);
+
+        @GET("empresa/get/{CNPJ}")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> getEmpresa(@Path("CNPJ") String cnpj);
+
+        @GET("empresa/Listar")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> listarEmpresas();
+
+
     }
 
 

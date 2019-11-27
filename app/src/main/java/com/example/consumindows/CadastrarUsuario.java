@@ -2,6 +2,7 @@ package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,22 +22,24 @@ public class CadastrarUsuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // esconder barra de titulo
         setContentView(R.layout.activity_cadastrar_usuario);
 
         final Button btncadastrar = findViewById(R.id.btnCadastrar);
         final EditText email = findViewById(R.id.etEmail);
-        final EditText login = findViewById(R.id.etavaliacao);
+        final EditText login = findViewById(R.id.etLogin);
         final EditText senha = findViewById(R.id.etSenha);
         final EditText cpf = findViewById(R.id.etCPF);
-        final TextView testeResposta = findViewById(R.id.tvCadastro);
+        // final TextView testeResposta = findViewById(R.id.tvCadastro);
         final Cliente c = new Cliente();
 
         btncadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // validar campos
 
                 c.setEmail(email.getText().toString());
-                c.setCPF(cpf.getInputType());
+                c.setCPF(cpf.getText().toString());
                 c.setLogin(login.getText().toString());
                 c.setSenha(senha.getText().toString());
 
@@ -46,9 +49,18 @@ public class CadastrarUsuario extends AppCompatActivity {
                     public void onResponse(Call<Cliente> call, Response<Cliente> response) {
                         if (response.body() != null) {
                             Cliente res = response.body();
-                            c.setIdusuario(res.getIdusuario());
-                            testeResposta.setText("sucesso !" + res.getIdcliente());
-                            Log.e("wig", "id= " + res.getIdcliente());
+                            Log.i("wig", "id= " + res.getIdcliente());
+
+                            // após cadastro jogar pra index
+                            Intent telaIndex = new Intent(CadastrarUsuario.this, testeIntente.class);
+                            Bundle param = new Bundle();
+                            param.putInt("id", res.getIdcliente());
+                            telaIndex.putExtras(param);
+                            startActivity(telaIndex);
+                        } else {
+                            // se der erro no cadastro
+                            Toast.makeText(CadastrarUsuario.this, "Erro ao cadastrar",
+                                    Toast.LENGTH_SHORT).show();
                         }
                     }
 

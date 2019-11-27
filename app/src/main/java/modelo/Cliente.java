@@ -3,7 +3,7 @@ package modelo;
 public class Cliente extends Usuario {
 
     private int idcliente;
-    private int CPF;
+    private String CPF;
 
     public int getIdcliente() {
         return idcliente;
@@ -13,11 +13,11 @@ public class Cliente extends Usuario {
         this.idcliente = idcliente;
     }
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 }
