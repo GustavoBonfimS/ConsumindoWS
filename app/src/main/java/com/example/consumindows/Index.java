@@ -22,6 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.TextView;
 
 import java.sql.Date;
 import java.util.List;
@@ -34,7 +35,7 @@ import retrofit2.Response;
 
 public class Index extends AppCompatActivity {
 
-    private Date lastCheck; // variavel que guarda ultima verificação no ws
+    // private Date lastCheck; // variavel que guarda ultima verificação no ws
     // private Date dataAtual;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -49,7 +50,7 @@ public class Index extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent telaIntesteTeste = new Intent(Index.this, TesteAvaliacao.class);
+                Intent telaIntesteTeste = new Intent(Index.this, testeIntente.class);
                 startActivity(telaIntesteTeste);
             }
         });
@@ -71,6 +72,7 @@ public class Index extends AppCompatActivity {
         //java.util.Date dataUtil = new java.util.Date();
         // dataAtual = new Date(dataUtil.getTime());
 
+        /*
         Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(lastCheck);
         call.enqueue(new Callback<List<Avaliacao>>() {
             @Override
@@ -84,6 +86,8 @@ public class Index extends AppCompatActivity {
             }
         });
 
+
+         */
 
 
     }
