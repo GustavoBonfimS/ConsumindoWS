@@ -30,4 +30,14 @@
     <string name="NomeEmpresa">Açai Unitoledo</string>
     <string name="avaliacao">Avaliações</string>
     <string name="todo">TODO</string>
+    <string name="informacao">alguma informação</string>
+    <string name="nome">nome</string>
+    <string name="logout">Log out</string>
+    <string name="log_out">Log out</string>
+    <string name="quem_somos">Quem somos ?</string>
+    <string name="communicate">Communicate</string>
+    <string name="empresas">Empresas</string>
+    <string name="meu_perfil">Meu Perfil</string>
+    <string name="minhas_avaliacoes">Minhas avaliações</string>
+    <string name="pagina_inicial">Página Inicial</string>
 </resources>
