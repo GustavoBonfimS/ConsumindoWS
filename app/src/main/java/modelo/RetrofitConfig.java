@@ -21,7 +21,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.98:8080/WigWS/webresources/";
+    String url = "http://192.168.0.31:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
