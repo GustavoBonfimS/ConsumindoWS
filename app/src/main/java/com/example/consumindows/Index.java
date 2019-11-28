@@ -68,6 +68,8 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
+        // ta foda
+
         // pega data atual do sistema
         //java.util.Date dataUtil = new java.util.Date();
         // dataAtual = new Date(dataUtil.getTime());
