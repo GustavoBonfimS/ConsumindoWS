@@ -50,8 +50,8 @@ public class Index extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent telaIntesteTeste = new Intent(Index.this, testeIntente.class);
-                startActivity(telaIntesteTeste);
+                Intent telaPesquisa = new Intent(Index.this, TelaPesquisa.class);
+                startActivity(telaPesquisa);
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
