@@ -26,7 +26,7 @@ public class TelaPesquisa extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tela_pesquisa);
 
-        listView = findViewById(R.id.lvLista);
+        listView = findViewById(R.id.lvPesquisa);
 
         final SearchView pesquisar = (SearchView) findViewById(R.id.search);
         pesquisar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {

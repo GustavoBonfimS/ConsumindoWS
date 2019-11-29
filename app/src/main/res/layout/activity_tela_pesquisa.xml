@@ -14,7 +14,7 @@
         android:background="?attr/colorPrimary" />
 
     <ListView
-        android:id="@+id/lvLista"
+        android:id="@+id/lvPesquisa"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
