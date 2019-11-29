@@ -106,6 +106,9 @@ public class RetrofitConfig {
         @Headers("Content-Type: application/json")
         Call<Empresa> listarEmpresas();
 
+        @GET("empresa/pesquisa/{empresa}")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> pwsquisa(@Path("empresa") String empresa);
 
     }
 
