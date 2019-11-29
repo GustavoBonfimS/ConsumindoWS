@@ -25,9 +25,6 @@ import retrofit2.Response;
 public class testeIntente extends AppCompatActivity {
 
     ListView lvLista;
-    List<String> sLista = null;
-    String testeLogin;
-    String testeLogin2;
 
 
     @Override
