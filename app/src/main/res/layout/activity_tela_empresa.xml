@@ -7,115 +7,64 @@
     android:background="#F0F8FF"
     tools:context=".telaEmpresa">
 
-
-    <ImageView
-        android:id="@+id/imageEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="135dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[0]" />
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text"
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
-        app:layout_constraintBottom_toTopOf="@+id/usuariotext"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageEmpresa">
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/nomeEmpresa"
-        android:layout_width="293dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="208dp"
-        android:background="#8BFF9800"
-        android:foregroundGravity="center_vertical"
-        android:hint="@string/NomeEmpresa"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/etavaliacao"
-        android:layout_width="285dp"
-        android:layout_height="129dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="23dp"
-        android:background="#8BFF9800"
-        android:ems="10"
-        android:gravity="left|start"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="284dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="@string/avaliacao"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/usuariotext"
+        android:id="@+id/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/conteudotext"
-        app:layout_constraintStart_toStartOf="@+id/etavaliacao"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
+        android:text="Endereço:"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="148dp" />
 
     <TextView
-        android:id="@+id/conteudotext"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="118dp"
-        android:text="@string/Conteúdo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuariotext" />
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tipo:"
+        tools:layout_editor_absoluteX="57dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
+        android:id="@+id/tvTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="tipo do estabelcimento"
+        tools:layout_editor_absoluteX="103dp"
+        tools:layout_editor_absoluteY="185dp" />
+
+    <TextView
+        android:id="@+id/tvNomeEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nome da empresa"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="47dp" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Avaliações"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="292dp" />
+
+    <TextView
+        android:id="@+id/tvEnderecoEmpres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="endereco da empresa"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="148dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

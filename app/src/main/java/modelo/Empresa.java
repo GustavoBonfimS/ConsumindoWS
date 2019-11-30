@@ -1,9 +1,11 @@
 package modelo;
 
+import java.io.Serializable;
+
 /**
  * @author Gustavo lindo
  */
-public class Empresa extends Usuario {
+public class Empresa extends Usuario implements Serializable {
 
     private int idempresa;
     private String CNPJ;

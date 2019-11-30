@@ -1,8 +1,11 @@
 package com.example.consumindows;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -10,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import modelo.Empresa;
@@ -20,6 +24,7 @@ import retrofit2.Response;
 
 public class TelaPesquisa extends AppCompatActivity {
     ListView listView;
+    Empresa empresa;
 
     public void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -38,9 +43,9 @@ public class TelaPesquisa extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<List<Empresa>> call, Response<List<Empresa>> response) {
                             if (response.code() == 200 || response.isSuccessful()) {
-                                List<Empresa> lista = response.body();
+                                final List<Empresa> lista = response.body();
 
-                                String[] array = new String[lista.size()];
+                                final String[] array = new String[lista.size()];
                                 for (int i = 0; i < lista.size(); i++) {
                                     array[i] = lista.get(i).getLogin();
                                 }
@@ -48,6 +53,18 @@ public class TelaPesquisa extends AppCompatActivity {
                                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(TelaPesquisa.this,
                                         android.R.layout.simple_list_item_1, array);
                                 listView.setAdapter(adapter);
+
+                                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                    @Override
+                                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                                        empresa = new Empresa();
+                                        empresa = lista.get(position);
+
+                                        Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
+                                        telaEmrpes.putExtra("empresa", empresa);
+                                    }
+                                });
 
                             }
 
@@ -70,6 +87,9 @@ public class TelaPesquisa extends AppCompatActivity {
                 return false;
             }
         });
+
+
+
     }
 
 }
