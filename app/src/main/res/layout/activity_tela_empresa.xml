@@ -8,114 +8,63 @@
     tools:context=".telaEmpresa">
 
 
-    <ImageView
-        android:id="@+id/imageEmpresa"
+    <TextView
+        android:id="@+id/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginBottom="135dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toTopOf="@+id/text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/avatars[0]" />
+        android:text="Endereço:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvEnderecoEmpres"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text"
-        android:layout_width="409dp"
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="196dp"
-        app:layout_constraintBottom_toTopOf="@+id/usuariotext"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageEmpresa">
+        android:layout_marginStart="57dp"
+        android:text="Tipo:"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvTipo"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/tvTipo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="185dp"
+        android:text="tipo do estabelcimento"
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/nomeEmpresa"
-        android:layout_width="293dp"
-        android:layout_height="84dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="208dp"
-        android:background="#8BFF9800"
-        android:foregroundGravity="center_vertical"
-        android:hint="@string/NomeEmpresa"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+    <TextView
+        android:id="@+id/tvNomeEmpresa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="47dp"
+        android:text="nome da empresa"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etavaliacao"
-        android:layout_width="285dp"
-        android:layout_height="129dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="23dp"
-        android:background="#8BFF9800"
-        android:ems="10"
-        android:gravity="left|start"
-        android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
-
-    <RatingBar
-        android:id="@+id/ratingBar"
+    <TextView
+        android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="88dp"
+        android:text="Avaliações"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
-        android:layout_width="284dp"
-        android:layout_height="80dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:gravity="center"
-            android:text="@string/avaliacao"
-            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-    </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
     <TextView
-        android:id="@+id/usuariotext"
+        android:id="@+id/tvEnderecoEmpres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="15dp"
-        android:text="@string/Usuario"
-        app:layout_constraintBottom_toTopOf="@+id/conteudotext"
-        app:layout_constraintStart_toStartOf="@+id/etavaliacao"
-        app:layout_constraintTop_toBottomOf="@+id/text" />
-
-    <TextView
-        android:id="@+id/conteudotext"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginBottom="118dp"
-        android:text="@string/Conteúdo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/usuariotext" />
+        android:layout_marginBottom="18dp"
+        android:text="endereco da empresa"
+        app:layout_constraintBottom_toTopOf="@+id/tvTipo"
+        app:layout_constraintStart_toEndOf="@+id/TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

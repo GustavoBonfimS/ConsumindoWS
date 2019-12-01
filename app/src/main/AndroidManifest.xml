@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".TelaPesquisa"></activity>
+        <activity android:name=".telaBuscar" />
         <activity
             android:name=".Index"
             android:label="@string/title_activity_index"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CadastrocomLayout" />
         <activity android:name=".telaEmpresa" />
         <activity android:name=".testeIntente" />
