@@ -16,6 +16,7 @@ public class telaEmpresa extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_tela_empresa);
 
         nome = findViewById(R.id.tvNomeEmpresa);
@@ -23,7 +24,6 @@ public class telaEmpresa extends AppCompatActivity {
         tipo = findViewById(R.id.tvTipo);
 
         Empresa empresa = (Empresa) getIntent().getSerializableExtra("empresa");
-
 
         nome.setText(empresa.getLogin());
         endereco.setText(empresa.getEndereco());

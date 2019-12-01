@@ -63,6 +63,7 @@ public class TelaPesquisa extends AppCompatActivity {
 
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
                                         telaEmrpes.putExtra("empresa", empresa);
+                                        startActivity(telaEmrpes);
                                     }
                                 });
 
@@ -77,8 +78,6 @@ public class TelaPesquisa extends AppCompatActivity {
                     });
                 }
 
-
-                Toast.makeText(TelaPesquisa.this, "pesquisou: " + s, Toast.LENGTH_SHORT).show();
                 return false;
             }
 

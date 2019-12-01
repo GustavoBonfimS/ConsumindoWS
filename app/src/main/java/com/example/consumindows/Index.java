@@ -23,10 +23,12 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Date;
 import java.util.List;
 
+import DAO.HomeDAO;
 import modelo.Avaliacao;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -34,10 +36,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class Index extends AppCompatActivity {
-
-    // private Date lastCheck; // variavel que guarda ultima verificação no ws
-    // private Date dataAtual;
-
     private AppBarConfiguration mAppBarConfiguration;
 
     @Override
@@ -68,12 +66,14 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        // ta foda
-
-        // pega data atual do sistema
-        //java.util.Date dataUtil = new java.util.Date();
-        // dataAtual = new Date(dataUtil.getTime());
-
+        /*
+        HomeDAO dao = new HomeDAO(this);
+        Date lastCheck = dao.buscarLastCheck();
+        if (!isLastCheckToday(lastCheck)) {
+            lastCheck = dao.buscarLastCheck();
+        }
+        Log.e("wig", "lastChek: " + lastCheck);
+         */
         /*
         Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(lastCheck);
         call.enqueue(new Callback<List<Avaliacao>>() {
@@ -86,11 +86,9 @@ public class Index extends AppCompatActivity {
             public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
                 Log.e("wig", "erro ao fazer request" + t.getMessage());
             }
-        });
-
+        });]
 
          */
-
 
     }
 
@@ -106,5 +104,19 @@ public class Index extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public boolean isLastCheckToday (Date lastCheck) {
+        // pega data atual do sistema
+        java.util.Date dataUtil = new java.util.Date();
+        Date dataAtual = new Date(dataUtil.getTime());
+
+        if (lastCheck.equals(dataAtual)) {
+            return true;
+        } else {
+            HomeDAO dao = new HomeDAO(this);
+            dao.inserirLastCheck(lastCheck);
+            return false;
+        }
     }
 }

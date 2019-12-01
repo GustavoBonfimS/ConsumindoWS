@@ -7,64 +7,64 @@
     android:background="#F0F8FF"
     tools:context=".telaEmpresa">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageEmpresa">
-
-    </com.google.android.material.textfield.TextInputLayout>
-
 
     <TextView
         android:id="@+id/TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Endereço:"
-        tools:layout_editor_absoluteX="55dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvEnderecoEmpres"
+        app:layout_constraintEnd_toEndOf="@+id/textView5"
+        app:layout_constraintStart_toEndOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="57dp"
         android:text="Tipo:"
-        tools:layout_editor_absoluteX="57dp"
-        tools:layout_editor_absoluteY="185dp" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvTipo"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvTipo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="185dp"
         android:text="tipo do estabelcimento"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="185dp" />
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvNomeEmpresa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="47dp"
         android:text="nome da empresa"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="88dp"
-        tools:layout_editor_absoluteY="47dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="88dp"
         android:text="Avaliações"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="292dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvTipo" />
 
     <TextView
         android:id="@+id/tvEnderecoEmpres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="18dp"
         android:text="endereco da empresa"
-        tools:layout_editor_absoluteX="126dp"
-        tools:layout_editor_absoluteY="148dp" />
+        app:layout_constraintBottom_toTopOf="@+id/tvTipo"
+        app:layout_constraintStart_toEndOf="@+id/TextView" />
 </androidx.constraintlayout.widget.ConstraintLayout>
