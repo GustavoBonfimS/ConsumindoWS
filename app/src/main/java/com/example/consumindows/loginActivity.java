@@ -57,7 +57,7 @@ public class loginActivity extends AppCompatActivity {
                                 telaIndex.putExtras(param);
                                 startActivity(telaIndex);
                             } else {
-                                Toast.makeText(loginActivity.this, "Nome de usuairo ou senha icnorretos",
+                                Toast.makeText(loginActivity.this, "Nome de usuairo ou senha incorretos",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }
