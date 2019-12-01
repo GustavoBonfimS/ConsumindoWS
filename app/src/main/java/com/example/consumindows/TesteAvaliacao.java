@@ -2,6 +2,7 @@ package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,12 +15,16 @@ import java.sql.Date;
 import java.sql.Time;
 
 import modelo.Avaliacao;
+import modelo.Cliente;
+import modelo.Empresa;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TesteAvaliacao extends AppCompatActivity {
+    Empresa empresa;
+    Cliente cliente;
 
     public void TesteAvaliaco() {
         this.TesteAvaliaco();
@@ -35,15 +40,17 @@ public class TesteAvaliacao extends AppCompatActivity {
         final TextView resposta = findViewById(R.id.tvResposta);
         final Avaliacao a = new Avaliacao();
 
+        empresa = (Empresa) getIntent().getSerializableExtra("empresa");
+        cliente = (Cliente) getIntent().getSerializableExtra("cliente");
+
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
                 a.setAutor(autor.getText().toString());
                 a.setConteudo(conteudo.getText().toString());
-                a.setIdcliente(1); // sera inserido o id do cliente que fez o login
-                a.setIdempresa(1); // sera inserido o id da empresa que for selecionada
+                a.setIdcliente(cliente.getIdcliente());
+                a.setIdempresa(empresa.getIdempresa());
 
                 // pega data atual do sistema
                 java.util.Date dataUtil = new java.util.Date();
@@ -58,9 +65,13 @@ public class TesteAvaliacao extends AppCompatActivity {
                 call.enqueue(new Callback<Avaliacao>() {
                     @Override
                     public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
-                        a.setIdavaliacao(response.body().getIdavaliacao());
-                        Toast.makeText(TesteAvaliacao.this, "id= " + response.body().getIdavaliacao(),
-                                Toast.LENGTH_SHORT).show();
+                        if (response.code() == 200 || response.isSuccessful()) {
+                            Toast.makeText(TesteAvaliacao.this, "Avaliado com sucesso!"
+                                    , Toast.LENGTH_SHORT).show();
+                            a.setIdavaliacao(response.body().getIdavaliacao());
+                            Intent telaVolta = new Intent(TesteAvaliacao.this, telaEmpresa.class);
+                            startActivity(telaVolta);
+                        }
                     }
 
                     @Override

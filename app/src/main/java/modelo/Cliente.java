@@ -1,6 +1,8 @@
 package modelo;
 
-public class Cliente extends Usuario {
+import java.io.Serializable;
+
+public class Cliente extends Usuario implements Serializable {
 
     private int idcliente;
     private String CPF;

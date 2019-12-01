@@ -59,6 +59,11 @@ public class RetrofitConfig {
 
 
         //---------------------------------Cliente-----------------------------------
+
+        @GET("cliente/get/{login}")
+        @Headers("Content-Type: application/json")
+        Call<Cliente> getCliente(@Path("login") String login);
+
         @POST("cliente/Cadastrar")
         @Headers("Content-Type: application/json")
         Call<Cliente> cadastrarCliente(@Body Cliente cliente);

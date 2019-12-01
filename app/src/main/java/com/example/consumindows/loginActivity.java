@@ -50,12 +50,12 @@ public class loginActivity extends AppCompatActivity {
                             // status.setText(response.body());
 
                             if (response.body().equals("true") && response.isSuccessful()) {
-                                Intent telaMainTeste = new Intent(loginActivity.this, Index.class);
+                                Intent telaIndex = new Intent(loginActivity.this, Index.class);
                                 Bundle param = new Bundle();
                                 param.putString("login", etLogin.getText().toString());
 
-                                telaMainTeste.putExtras(param);
-                                startActivity(telaMainTeste);
+                                telaIndex.putExtras(param);
+                                startActivity(telaIndex);
                             } else {
                                 Toast.makeText(loginActivity.this, "Nome de usuairo ou senha icnorretos",
                                         Toast.LENGTH_SHORT).show();

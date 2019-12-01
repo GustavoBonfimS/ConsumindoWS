@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import modelo.Cliente;
 import modelo.Empresa;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class TelaPesquisa extends AppCompatActivity {
     ListView listView;
     Empresa empresa;
+    Cliente cliente;
 
     public void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -32,6 +34,7 @@ public class TelaPesquisa extends AppCompatActivity {
         setContentView(R.layout.activity_tela_pesquisa);
 
         listView = findViewById(R.id.lvPesquisa);
+        cliente = (Cliente) getIntent().getSerializableExtra("cliente");
 
         final SearchView pesquisar = (SearchView) findViewById(R.id.search);
         pesquisar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -63,6 +66,7 @@ public class TelaPesquisa extends AppCompatActivity {
 
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
                                         telaEmrpes.putExtra("empresa", empresa);
+                                        telaEmrpes.putExtra("cliente", cliente);
                                         startActivity(telaEmrpes);
                                     }
                                 });

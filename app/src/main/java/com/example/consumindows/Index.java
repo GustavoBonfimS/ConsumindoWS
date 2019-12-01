@@ -30,6 +30,7 @@ import java.util.List;
 
 import DAO.HomeDAO;
 import modelo.Avaliacao;
+import modelo.Cliente;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -37,6 +38,8 @@ import retrofit2.Response;
 
 public class Index extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
+    Cliente clienteOBJ;
+    private String clienteLogin;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +47,30 @@ public class Index extends AppCompatActivity {
         setContentView(R.layout.activity_index);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        Bundle b;
+        b = getIntent().getExtras();
+        clienteLogin = b.getString("login");
+
+        Call<Cliente> call = new RetrofitConfig().getWigService().getCliente(clienteLogin);
+        call.enqueue(new Callback<Cliente>() {
+            @Override
+            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                clienteOBJ = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<Cliente> call, Throwable t) {
+                Log.e("wig", "erro ao fazer request" + t.getMessage());
+            }
+        });
+
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent telaPesquisa = new Intent(Index.this, TelaPesquisa.class);
+                telaPesquisa.putExtra("cliente", clienteOBJ);
                 startActivity(telaPesquisa);
             }
         });
@@ -95,6 +117,8 @@ public class Index extends AppCompatActivity {
         });]
 
          */
+
+
 
     }
 
