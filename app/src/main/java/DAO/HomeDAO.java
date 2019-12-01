@@ -19,23 +19,35 @@ public class HomeDAO {
     }
 
     public void inserirLastCheck(Date lastCheck) {
+
+        // pega data atual do sistema
+        java.util.Date dataUtil = new java.util.Date();
+        Date dataAtual = new Date(dataUtil.getTime());
+
         ContentValues values = new ContentValues();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        String date = sdf.format(lastCheck);
+        if (lastCheck == null) {
+            String date = sdf.format(dataAtual);
 
-        values.put("lastCheck", date);
-        banco.insert("home", null, values);
+            values.put("lastCheck", date);
+            banco.insert("home", null, values);
+        } else {
+            String date = sdf.format(lastCheck);
+            values.put("lastCheck", date);
+            banco.update("home", values, "id=1", null);
+        }
     }
 
     public Date buscarLastCheck() {
-        Cursor cursor = banco.query("home", new String[]{"lastCheck"}
+        Cursor cursor = banco.query("home", new String[]{"id", "lastCheck"}
                 , null, null, null, null, null);
 
         Date lastCheck = null;
 
-        if (cursor.moveToFirst()) {
-            String dataString = cursor.getString(0);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            String dataString = cursor.getString(cursor.getColumnIndex("lastCheck"));
 
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             try {

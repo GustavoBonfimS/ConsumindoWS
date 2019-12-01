@@ -66,14 +66,20 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        /*
+
         HomeDAO dao = new HomeDAO(this);
-        Date lastCheck = dao.buscarLastCheck();
-        if (!isLastCheckToday(lastCheck)) {
-            lastCheck = dao.buscarLastCheck();
+        //dao.inserirLastCheck(null);
+        //Date lastCheck = dao.buscarLastCheck();
+        /*
+
+        if (lastCheck == null) {
+            dao.inserirLastCheck(lastCheck);
         }
-        Log.e("wig", "lastChek: " + lastCheck);
-         */
+        */
+
+        //Log.e("wig", "lastChek: " + lastCheck);
+
+
         /*
         Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(lastCheck);
         call.enqueue(new Callback<List<Avaliacao>>() {
@@ -114,8 +120,8 @@ public class Index extends AppCompatActivity {
         if (lastCheck.equals(dataAtual)) {
             return true;
         } else {
-            HomeDAO dao = new HomeDAO(this);
-            dao.inserirLastCheck(lastCheck);
+            // HomeDAO dao = new HomeDAO(this);
+            // dao.inserirLastCheck(lastCheck);
             return false;
         }
     }

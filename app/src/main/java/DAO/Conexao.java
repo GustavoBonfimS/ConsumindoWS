@@ -16,7 +16,7 @@ public class Conexao extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table hoome(lastCheck Date)");
+        db.execSQL("create table hoome(id integer primary key autoincrement, lastCheck varchar(10))");
     }
 
     @Override
