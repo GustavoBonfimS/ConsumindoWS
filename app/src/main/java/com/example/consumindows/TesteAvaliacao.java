@@ -69,8 +69,8 @@ public class TesteAvaliacao extends AppCompatActivity {
                             Toast.makeText(TesteAvaliacao.this, "Avaliado com sucesso!"
                                     , Toast.LENGTH_SHORT).show();
                             a.setIdavaliacao(response.body().getIdavaliacao());
-                            Intent telaVolta = new Intent(TesteAvaliacao.this, telaEmpresa.class);
-                            startActivity(telaVolta);
+                            //finish();
+
                         }
                     }
 
