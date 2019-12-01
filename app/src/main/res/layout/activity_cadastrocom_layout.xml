@@ -1,33 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    tools:context=".CadastrocomLayout">
+    tools:context=".CadastrocomLayout"
+    android:orientation="vertical">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <ImageView
         android:id="@+id/logologin"
-        android:layout_width="120dp"
+        android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/textEmailCad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/wig_logo" />
+        app:srcCompat="@drawable/wig_logo"
+        android:layout_marginBottom="50dp"/>
 
 
     <EditText
         android:id="@+id/etEmail"
         style="@style/Widget.AppCompat.Light.AutoCompleteTextView"
-        android:layout_width="255dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -39,6 +43,7 @@
         android:importantForAutofill="no"
         android:inputType="textEmailAddress"
         android:textSize="16sp"
+        android:layout_marginBottom="50dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,12 +52,11 @@
     <EditText
         android:id="@+id/etLogin"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="76dp"
         android:background="#8BFF9800"
         android:drawableStart="@drawable/icon_action_username"
         android:ems="10"
@@ -61,11 +65,12 @@
         android:inputType="textPersonName"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="338dp" />
+        tools:layout_editor_absoluteY="338dp"
+        android:layout_marginBottom="50dp"/>
 
     <EditText
         android:id="@+id/etSenha"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -77,17 +82,17 @@
         android:hint="@string/senha"
         android:inputType="textPassword"
         tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="404dp" />
+        tools:layout_editor_absoluteY="404dp"
+        android:layout_marginBottom="50dp"/>
 
     <EditText
         android:id="@+id/etCPF"
         style="@style/Widget.AppCompat.AutoCompleteTextView"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
-        android:layout_marginStart="76dp"
         android:background="#8BFF9800"
         android:ems="10"
         android:hint="@string/cpf"
@@ -95,50 +100,15 @@
         android:inputType="textPersonName"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="465dp" />
+        tools:layout_editor_absoluteY="465dp"
+        android:layout_marginBottom="50dp"/>
 
-    <androidx.cardview.widget.CardView
+    <Button
         android:id="@+id/btnCadastrar"
-        android:layout_width="0dp"
-        android:layout_height="46dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="63dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="98dp"
-        android:autofillHints="Cadastrar"
-        android:foregroundGravity="center"
-        app:cardBackgroundColor="#FFA500"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:targetApi="o">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastrar"
+        android:background="#8BFF9800"/>
 
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/textBtCadastro"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentBottom="true"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="90dp"
-                android:layout_marginBottom="8dp"
-                android:foregroundGravity="center"
-                android:text="Cadastrar"
-                android:textColor="#fff"
-                android:textSize="23sp" />
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</ScrollView>
