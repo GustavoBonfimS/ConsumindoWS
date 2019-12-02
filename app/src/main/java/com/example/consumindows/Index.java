@@ -2,34 +2,20 @@ package com.example.consumindows;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
 import android.util.Log;
 import android.view.View;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
 import com.google.android.material.navigation.NavigationView;
-
 import androidx.drawerlayout.widget.DrawerLayout;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import android.view.Menu;
-import android.widget.TextView;
-import android.widget.Toast;
-
 import java.sql.Date;
-import java.util.List;
 
-import DAO.HomeDAO;
-import modelo.Avaliacao;
 import modelo.Cliente;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -48,8 +34,7 @@ public class Index extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Bundle b;
-        b = getIntent().getExtras();
+        Bundle b = getIntent().getExtras();
         clienteLogin = b.getString("login");
 
         Call<Cliente> call = new RetrofitConfig().getWigService().getCliente(clienteLogin);

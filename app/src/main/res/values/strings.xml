@@ -30,4 +30,6 @@
     <string name="NomeEmpresa">Açai Unitoledo</string>
     <string name="avaliacao">Avaliações</string>
     <string name="todo">TODO</string>
+    <string name="logo">logo</string>
+    <string name="termosCadastro">Ao se cadastrar você concorda com os termos de uso</string>
 </resources>
