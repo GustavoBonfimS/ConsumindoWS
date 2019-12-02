@@ -21,7 +21,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://172.20.10.12:8080/WigWS/webresources/";
+    String url = "http://192.168.0.31:8080/WigWS/webresources/";
 
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
@@ -76,9 +76,9 @@ public class RetrofitConfig {
         @Headers("Content-Type: application/json")
         Call<Cliente> alterar (@Body Cliente cliente);
 
-        @GET("cliente/atualizarIndex/{lastCheck}")
+        @GET("cliente/atualizarIndex/{id}")
         @Headers("Content-Type: application/json")
-        Call<List<Avaliacao>> atualizarIndex (@Path("lastCheck") Date lastCheck);
+        Call<List<Avaliacao>> atualizarIndex (@Path("id") int id);
 
         //---------------------------------Avaliação------------------------------------------
 

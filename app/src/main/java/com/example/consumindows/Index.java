@@ -88,22 +88,8 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-
-        HomeDAO dao = new HomeDAO(this);
-        //dao.inserirLastCheck(null);
-        //Date lastCheck = dao.buscarLastCheck();
         /*
-
-        if (lastCheck == null) {
-            dao.inserirLastCheck(lastCheck);
-        }
-        */
-
-        //Log.e("wig", "lastChek: " + lastCheck);
-
-
-        /*
-        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(lastCheck);
+        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(clienteOBJ.getIdcliente());
         call.enqueue(new Callback<List<Avaliacao>>() {
             @Override
             public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
@@ -114,11 +100,16 @@ public class Index extends AppCompatActivity {
             public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
                 Log.e("wig", "erro ao fazer request" + t.getMessage());
             }
-        });]
+        });
 
          */
 
 
+    }
+
+    // não deixar voltar para tela de login
+    @Override
+    public void onBackPressed() {
 
     }
 
@@ -136,7 +127,7 @@ public class Index extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public boolean isLastCheckToday (Date lastCheck) {
+    public boolean isLastCheckToday(Date lastCheck) {
         // pega data atual do sistema
         java.util.Date dataUtil = new java.util.Date();
         Date dataAtual = new Date(dataUtil.getTime());

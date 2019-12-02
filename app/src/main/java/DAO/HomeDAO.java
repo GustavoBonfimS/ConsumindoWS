@@ -21,44 +21,39 @@ public class HomeDAO {
     public void inserirLastCheck(Date lastCheck) {
 
         // pega data atual do sistema
-        java.util.Date dataUtil = new java.util.Date();
-        Date dataAtual = new Date(dataUtil.getTime());
+        //java.util.Date dataUtil = new java.util.Date();
+        // Date dataAtual = new Date(dataUtil.getTime());
 
         ContentValues values = new ContentValues();
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         if (lastCheck == null) {
-            String date = sdf.format(dataAtual);
+            //String date = sdf.format(dataAtual);
 
-            values.put("lastCheck", date);
+            String date = "2019-11-20";
+            values.put("lastCheck", "2019-11=12");
             banco.insert("home", null, values);
         } else {
+            String[] id = new String[] {"1"};
             String date = sdf.format(lastCheck);
             values.put("lastCheck", date);
-            banco.update("home", values, "id=1", null);
+            banco.update("home", values, "_id=?", id);
         }
     }
 
-    public Date buscarLastCheck() {
-        Cursor cursor = banco.query("home", new String[]{"id", "lastCheck"}
-                , null, null, null, null, null);
-
-        Date lastCheck = null;
+    public String buscarLastCheck() {
+        String lastCheck = null;
+        String[] colunas = new String[]{"_id", "lastCheck"};
+        Cursor cursor = banco.query("home", colunas,
+                null, null, null, null, null);
 
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
-            String dataString = cursor.getString(cursor.getColumnIndex("lastCheck"));
 
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                java.util.Date utilDate = sdf.parse(dataString);
-                lastCheck = new Date(utilDate.getTime());
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
+            lastCheck = cursor.getString(1);
 
         }
+        cursor.close();
 
         return lastCheck;
     }

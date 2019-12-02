@@ -83,6 +83,7 @@ public class loginActivity extends AppCompatActivity {
 
     }
 
+
     private boolean validaCampos() {
         boolean res = false;
         String login = etLogin.getText().toString();

@@ -9,18 +9,19 @@ import androidx.annotation.Nullable;
 public class Conexao extends SQLiteOpenHelper {
 
     private static final String name = "wig";
-    private static final int version = 1;
+    private static final int version = 2;
     public Conexao(Context context) {
         super(context, name, null, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table hoome(id integer primary key autoincrement, lastCheck varchar(10))");
+        db.execSQL("create table if not exists home(_id integer primary key autoincrement, lastCheck text)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        // db.execSQL("drop table home");
+        onCreate(db);
     }
 }

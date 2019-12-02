@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import DAO.HomeDAO;
 import modelo.Cliente;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -30,7 +31,6 @@ public class CadastrarUsuario extends AppCompatActivity {
         final EditText login = findViewById(R.id.etLogin);
         final EditText senha = findViewById(R.id.etSenha);
         final EditText cpf = findViewById(R.id.etCPF);
-        // final TextView testeResposta = findViewById(R.id.tvCadastro);
         final Cliente c = new Cliente();
 
         btncadastrar.setOnClickListener(new View.OnClickListener() {
