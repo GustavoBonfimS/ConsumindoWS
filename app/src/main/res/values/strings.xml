@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ConsumindoWS</string>
+    <string name="app_name">WIG</string>
     <string name="etUsername">username</string>
     <string name="tela_de_login">Tela de Login</string>
     <string name="login">Login</string>
@@ -19,12 +19,12 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_home">Pagina inicial</string>
+    <string name="menu_gallery">Minhas avaliações</string>
+    <string name="menu_slideshow">Empresas</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
+    <string name="menu_share">WIG ? Oque é ?</string>
+    <string name="menu_send">Sobre os desenvolvedores</string>
     <string name="Conteúdo">Ótimo atendimento, os produtos de boa qualidade pelo que pude ver, recomendo!</string>
     <string name="Usuario">Gustavo Bonfim</string>
     <string name="NomeEmpresa">Açai Unitoledo</string>
