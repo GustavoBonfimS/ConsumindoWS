@@ -28,10 +28,11 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
+                android:icon="@drawable/ic_quem_somos"
                 android:title="@string/wig_oque" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_quem_somos"
+                android:icon="@drawable/ic_code"
                 android:title="@string/sobre_os_desenvolvedores" />
         </menu>
     </item>

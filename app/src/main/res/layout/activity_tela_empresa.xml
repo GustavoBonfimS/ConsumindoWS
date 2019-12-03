@@ -1,78 +1,195 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
+    android:padding="10dp"
     android:background="@drawable/background"
     tools:context=".telaEmpresa">
 
 
-    <TextView
-        android:id="@+id/tvNomeEmpresa"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:layout_marginTop="47dp"
-        android:text="nome da empresa"
-        android:layout_marginBottom="50dp"
-        android:textSize="35sp" />
-
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="80dp">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="endereco:" />
+            android:id="@+id/tvNomeEmpresa"
+            android:text="teste nome"
+            android:layout_gravity="center"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="50dp" />
 
-        <TextView
-            android:layout_marginStart="10dp"
-            android:id="@+id/tvEnderecoEmpresa"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="endereco da empresa" />
+            android:layout_marginStart="80dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/endereco" />
+
+            <TextView
+                android:id="@+id/tvEnderecoEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/endereco_da_empresa" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tipo" />
+
+            <TextView
+                android:id="@+id/tvTipoEmpresa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/tipo_da_emprea" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnAvaliar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Avaliar" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="@string/avalia_es"
+            android:textSize="35sp" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/CardView1"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#D3B8B8"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginBottom="6dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvConteudo1"
+                app:layout_constraintEnd_toStartOf="@+id/tvAutor1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvAutor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:layout_marginEnd="281dp"
+                android:layout_marginBottom="42dp"
+                android:text="Autor"
+                app:layout_constraintBottom_toTopOf="@+id/tvConteudo1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvConteudo1"
+                android:layout_width="302dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/Conteúdo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvAutor1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/inutilizado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DAEEF3" />
+
+        <LinearLayout
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#ACC9E4"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="76dp"
+                android:layout_height="62dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvAutor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Autor" />
+
+            <TextView
+                android:id="@+id/tvConteudo2"
+                android:layout_width="322dp"
+                android:layout_height="99dp"
+                android:layout_marginBottom="4dp"
+                android:text="@string/Conteúdo" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/inutilizado2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#DAEEF3" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/cardView3"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="#ECE496">
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="76dp"
+                android:layout_height="62dp"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvAutor3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Autor" />
+
+            <TextView
+                android:id="@+id/tvConteudo3"
+                android:layout_width="322dp"
+                android:layout_height="99dp"
+                android:text="@string/Conteúdo" />
+        </LinearLayout>
+
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo:" />
-
-        <TextView
-            android:layout_marginStart="10dp"
-            android:id="@+id/tvTipoEmpresa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo da emprea" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/btnAvaliar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Avaliar" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:layout_marginTop="40dp"
-        android:text="Avaliações" />
-
-</LinearLayout>
+</ScrollView>

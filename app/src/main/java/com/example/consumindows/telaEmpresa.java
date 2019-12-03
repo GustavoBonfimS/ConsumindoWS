@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import modelo.Cliente;
 import modelo.Empresa;
 
@@ -19,6 +21,8 @@ public class telaEmpresa extends AppCompatActivity {
     Button avaliar;
     Empresa empresa;
     Cliente cliente;
+    TextView autor1;
+    TextView conteudo1;
 
 
     @Override
@@ -31,6 +35,8 @@ public class telaEmpresa extends AppCompatActivity {
         endereco = findViewById(R.id.tvEnderecoEmpresa);
         tipo = findViewById(R.id.tvTipoEmpresa);
         avaliar = findViewById(R.id.btnAvaliar);
+        autor1 = findViewById(R.id.tvAutor1);
+        conteudo1 = findViewById(R.id.tvConteudo1);
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
         cliente = (Cliente) getIntent().getSerializableExtra("cliente");

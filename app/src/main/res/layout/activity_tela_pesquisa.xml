@@ -12,7 +12,9 @@
         android:id="@+id/search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layoutDirection="rtl"
         android:inputType="text"
+        android:backgroundTint="@color/laranjaPrincipal"
         android:background="?attr/colorPrimary" />
 
     <ListView
