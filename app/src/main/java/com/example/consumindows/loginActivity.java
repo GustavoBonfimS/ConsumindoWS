@@ -116,4 +116,8 @@ public class loginActivity extends AppCompatActivity {
         return resultado;
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAffinity();
+    }
 }

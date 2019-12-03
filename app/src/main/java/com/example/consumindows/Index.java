@@ -2,18 +2,26 @@ package com.example.consumindows;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
+
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
 import com.google.android.material.navigation.NavigationView;
+
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
 import android.view.Menu;
+
 import java.sql.Date;
 
 import modelo.Cliente;
@@ -112,17 +120,8 @@ public class Index extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public boolean isLastCheckToday(Date lastCheck) {
-        // pega data atual do sistema
-        java.util.Date dataUtil = new java.util.Date();
-        Date dataAtual = new Date(dataUtil.getTime());
-
-        if (lastCheck.equals(dataAtual)) {
-            return true;
-        } else {
-            // HomeDAO dao = new HomeDAO(this);
-            // dao.inserirLastCheck(lastCheck);
-            return false;
-        }
+    public void Sair(MenuItem item) {
+        Intent telaLogin = new Intent(this, loginActivity.class);
+        startActivity(telaLogin);
     }
 }

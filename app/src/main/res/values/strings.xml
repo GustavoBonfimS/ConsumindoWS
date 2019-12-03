@@ -32,4 +32,11 @@
     <string name="todo">TODO</string>
     <string name="logo">logo</string>
     <string name="termosCadastro">Ao se cadastrar você concorda com os termos de uso</string>
+    <string name="wig_oque">WIG ? Oque é ?</string>
+    <string name="sobre_os_desenvolvedores">Sobre os desenvolvedores</string>
+    <string name="mais">Mais</string>
+    <string name="empresas">Empresas</string>
+    <string name="minhas_avalia_es">Minhas avaliações</string>
+    <string name="pagina_inicial">Pagina inicial</string>
+    <string name="sair">Sair</string>
 </resources>
