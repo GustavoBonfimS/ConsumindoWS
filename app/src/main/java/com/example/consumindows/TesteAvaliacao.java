@@ -1,9 +1,11 @@
 package com.example.consumindows;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,8 @@ import retrofit2.Response;
 public class TesteAvaliacao extends AppCompatActivity {
     Empresa empresa;
     Cliente cliente;
+    EditText etAutor;
+    EditText etConteudo;
 
     public void TesteAvaliaco() {
         this.TesteAvaliaco();
@@ -33,11 +37,11 @@ public class TesteAvaliacao extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_teste_avaliacao);
-        final EditText autor = findViewById(R.id.etAutor);
-        Button btAvalia = findViewById(R.id.btAvaliacao);
-        final EditText conteudo = findViewById(R.id.etConteudo);
-        final TextView resposta = findViewById(R.id.tvResposta);
+        etAutor = findViewById(R.id.etAutor);
+        Button btAvalia = findViewById(R.id.btnAvaliacao);
+        etConteudo = findViewById(R.id.etConteudo);
         final Avaliacao a = new Avaliacao();
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
@@ -47,8 +51,8 @@ public class TesteAvaliacao extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                a.setAutor(autor.getText().toString());
-                a.setConteudo(conteudo.getText().toString());
+                a.setAutor(etAutor.getText().toString());
+                a.setConteudo(etConteudo.getText().toString());
                 a.setIdcliente(cliente.getIdcliente());
                 a.setIdempresa(empresa.getIdempresa());
 
@@ -87,6 +91,32 @@ public class TesteAvaliacao extends AppCompatActivity {
         });
 
 
+    }
+
+    private boolean validaCampos() {
+        boolean res = false;
+        String autor = etAutor.getText().toString();
+        String conteudo = etConteudo.getText().toString();
+
+        if (res = isCampoVazio(autor)) {
+            etAutor.requestFocus();
+        } else if (res = isCampoVazio(conteudo)) {
+            etConteudo.requestFocus();
+        }
+
+        if (res) {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(this);
+            dlg.setTitle("Aviso");
+            dlg.setMessage("Há campos vazios ou em branco");
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
+        }
+        return res;
+    }
+
+    private boolean isCampoVazio(String valor) {
+        boolean resultado = (TextUtils.isEmpty(valor)) || valor.trim().isEmpty();
+        return resultado;
     }
 
 }

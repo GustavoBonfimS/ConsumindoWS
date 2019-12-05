@@ -4,14 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.List;
+
+import modelo.Avaliacao;
 import modelo.Cliente;
 import modelo.Empresa;
+import modelo.RetrofitConfig;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class telaEmpresa extends AppCompatActivity {
 
@@ -23,6 +31,10 @@ public class telaEmpresa extends AppCompatActivity {
     Cliente cliente;
     TextView autor1;
     TextView conteudo1;
+    TextView autor2;
+    TextView conteudo2;
+    TextView autor3;
+    TextView conteudo3;
 
 
     @Override
@@ -37,6 +49,10 @@ public class telaEmpresa extends AppCompatActivity {
         avaliar = findViewById(R.id.btnAvaliar);
         autor1 = findViewById(R.id.tvAutor1);
         conteudo1 = findViewById(R.id.tvConteudo1);
+        autor2 = findViewById(R.id.tvAutor2);
+        conteudo2 = findViewById(R.id.tvConteudo2);
+        autor3 = findViewById(R.id.tvAutor3);
+        conteudo3 = findViewById(R.id.tvConteudo3);
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
         cliente = (Cliente) getIntent().getSerializableExtra("cliente");
@@ -52,6 +68,29 @@ public class telaEmpresa extends AppCompatActivity {
                 telaAvaliacao.putExtra("empresa", empresa);
                 telaAvaliacao.putExtra("cliente", cliente);
                 startActivity(telaAvaliacao);
+            }
+        });
+
+        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().listarAvaliacao();
+        call.enqueue(new Callback<List<Avaliacao>>() {
+            @Override
+            public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                if (response.code() == 200 || response.isSuccessful()) {
+                    List<Avaliacao> lista = response.body();
+                    autor1.setText(lista.get(0).getAutor());
+                    conteudo1.setText(lista.get(0).getConteudo());
+
+                    autor1.setText(lista.get(1).getAutor());
+                    conteudo2.setText(lista.get(1).getConteudo());
+
+                    autor3.setText(lista.get(3).getAutor());;
+                    conteudo3.setText(lista.get(3).getConteudo());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
             }
         });
 

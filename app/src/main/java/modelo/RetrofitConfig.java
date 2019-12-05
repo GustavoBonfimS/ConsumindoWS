@@ -2,6 +2,9 @@ package modelo;
 
 import android.app.DownloadManager;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.net.ContentHandler;
 import java.sql.Date;
 import java.util.List;
@@ -23,10 +26,12 @@ public class RetrofitConfig {
     private final Retrofit retrofit;
     String url = "http://192.168.0.31:8080/WigWS/webresources/";
 
+    Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
+
     public RetrofitConfig() {
         this.retrofit = new Retrofit.Builder()
                 .baseUrl(url)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create(g))
                 .build();
     }
 
