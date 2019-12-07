@@ -81,9 +81,9 @@ public class RetrofitConfig {
         @Headers("Content-Type: application/json")
         Call<Cliente> alterar (@Body Cliente cliente);
 
-        @GET("cliente/atualizarIndex/{id}")
+        @GET("cliente/atualizarIndex/{login}")
         @Headers("Content-Type: application/json")
-        Call<List<Avaliacao>> atualizarIndex (@Path("id") int id);
+        Call<List<Avaliacao>> atualizarIndex (@Path("login") String login);
 
         //---------------------------------Avaliação------------------------------------------
 

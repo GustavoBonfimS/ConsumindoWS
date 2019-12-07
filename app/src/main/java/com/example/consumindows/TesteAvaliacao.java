@@ -73,6 +73,8 @@ public class TesteAvaliacao extends AppCompatActivity {
                             Toast.makeText(TesteAvaliacao.this, "Avaliado com sucesso!"
                                     , Toast.LENGTH_SHORT).show();
                             a.setIdavaliacao(response.body().getIdavaliacao());
+                            a.setHora(response.body().getHora());
+                            a.setData(response.body().getData());
                             //finish();
 
                         }

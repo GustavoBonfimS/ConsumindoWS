@@ -18,11 +18,10 @@
             android:id="@+id/imageView3"
             android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:background="#DAEEF3"
             app:srcCompat="@drawable/wig_logo2" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/CardView1"
+            android:id="@+id/cardView1"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:background="#D3B8B8">
