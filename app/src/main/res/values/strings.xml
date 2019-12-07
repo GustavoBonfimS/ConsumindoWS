@@ -48,4 +48,7 @@
     <string name="avaliar_empresa">Avaliar empresa</string>
     <string name="autor">Autor</string>
     <string name="avalia_es">Avaliações</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="avalia_es_recentes">Avaliações recentes</string>
+    <string name="empresa">Empresa</string>
 </resources>

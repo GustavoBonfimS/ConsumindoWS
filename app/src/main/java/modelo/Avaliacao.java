@@ -13,6 +13,7 @@ public class Avaliacao implements Serializable {
     private int idavaliacao;
     private String autor;
     private String conteudo;
+    private String empresa;
     private int idcliente;
     private int idempresa;
     private Date data;
@@ -72,5 +73,13 @@ public class Avaliacao implements Serializable {
 
     public void setHora(Time hora) {
         this.hora = hora;
+    }
+
+    public String getEmpresa() {
+        return empresa;
+    }
+
+    public void setEmpresa(String empresa) {
+        this.empresa = empresa;
     }
 }

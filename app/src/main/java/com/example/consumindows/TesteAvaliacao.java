@@ -30,17 +30,13 @@ public class TesteAvaliacao extends AppCompatActivity {
     EditText etAutor;
     EditText etConteudo;
 
-    public void TesteAvaliaco() {
-        this.TesteAvaliaco();
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_teste_avaliacao);
         etAutor = findViewById(R.id.etAutor);
-        Button btAvalia = findViewById(R.id.btnAvaliacao);
+        final Button btAvalia = findViewById(R.id.btnAvaliacao);
         etConteudo = findViewById(R.id.etConteudo);
         final Avaliacao a = new Avaliacao();
 
@@ -50,6 +46,7 @@ public class TesteAvaliacao extends AppCompatActivity {
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                validaCampos();
 
                 a.setAutor(etAutor.getText().toString());
                 a.setConteudo(etConteudo.getText().toString());
@@ -75,6 +72,7 @@ public class TesteAvaliacao extends AppCompatActivity {
                             a.setIdavaliacao(response.body().getIdavaliacao());
                             a.setHora(response.body().getHora());
                             a.setData(response.body().getData());
+                            btAvalia.setVisibility(View.GONE);
                             //finish();
 
                         }

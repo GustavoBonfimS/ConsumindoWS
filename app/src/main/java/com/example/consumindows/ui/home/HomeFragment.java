@@ -43,6 +43,9 @@ public class HomeFragment extends Fragment {
         final TextView autor2 = root.findViewById(R.id.tvAutor3);
         final TextView conteudo2 = root.findViewById(R.id.tvConteudo2);
         final ConstraintLayout cardView2 = root.findViewById(R.id.cardView2);
+        final TextView empresaCV1 = root.findViewById(R.id.tvEmpresaCV1);
+        final TextView empresaCV2 = root.findViewById(R.id.tvEmpresaCV2);
+        final TextView empresaCV3 = root.findViewById(R.id.tvEmpresaCV3);
         final ConstraintLayout cardView3 = root.findViewById(R.id.cardView3);
         final TextView autor3 = root.findViewById(R.id.tvAutor3);
         final TextView conteudo3 = root.findViewById(R.id.tvConteudo3);
@@ -69,6 +72,7 @@ public class HomeFragment extends Fragment {
                                 case 1: // caso a lista só tenha 1 elemento
                                     autor1.setText(lista.get(0).getAutor());
                                     conteudo1.setText(lista.get(0).getConteudo());
+                                    empresaCV1.setText(lista.get(0).getEmpresa());
                                     // Toast.makeText(getContext(), "apenas 1 nova avaliação", Toast.LENGTH_SHORT).show();
                                     cardView2.setVisibility(View.GONE);
                                     cardView3.setVisibility(View.GONE);
@@ -76,21 +80,25 @@ public class HomeFragment extends Fragment {
                                 case 2: // caso a lista só tenha 2 elemento
                                     autor1.setText(lista.get(0).getAutor());
                                     conteudo1.setText(lista.get(0).getConteudo());
+                                    empresaCV1.setText(lista.get(0).getEmpresa());
 
                                     autor2.setText(lista.get(1).getAutor());
                                     conteudo2.setText(lista.get(1).getConteudo());
-                                    // Toast.makeText(getContext(), "apenas 2 nova avaliação", Toast.LENGTH_SHORT).show();
+                                    empresaCV2.setText(lista.get(1).getEmpresa());
                                     cardView3.setVisibility(View.GONE);;
                                     break;
                                 case 3: // caso a lista tenha 3 elementos
                                     autor1.setText(lista.get(0).getAutor());
                                     conteudo1.setText(lista.get(0).getConteudo());
+                                    empresaCV1.setText(lista.get(0).getEmpresa());
 
                                     autor2.setText(lista.get(1).getAutor());
                                     conteudo2.setText(lista.get(1).getConteudo());
+                                    empresaCV2.setText(lista.get(1).getEmpresa());
 
                                     autor3.setText(lista.get(2).getAutor());
                                     conteudo3.setText(lista.get(2).getConteudo());
+                                    empresaCV3.setText(lista.get(2).getEmpresa());
                                     break;
                             }
                         }
