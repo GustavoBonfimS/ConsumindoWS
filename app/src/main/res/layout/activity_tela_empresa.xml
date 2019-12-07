@@ -1,78 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@drawable/background"
     tools:context=".telaEmpresa">
 
-
-    <TextView
-        android:id="@+id/tvNomeEmpresa"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-
-        android:layout_marginTop="47dp"
-        android:text="nome da empresa"
-        android:layout_marginBottom="50dp"
-        android:textSize="35sp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginStart="80dp">
+        app:cardBackgroundColor="#FF952B">
 
         <TextView
+            android:id="@+id/tvNomeEmpresa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="endereco:" />
+            android:layout_gravity="center"
+            android:layout_marginTop="47dp"
+            android:layout_marginBottom="50dp"
+            android:text="nome da empresa"
+            android:textColor="#FFFFFF"
+            android:textSize="35sp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="#FF952B"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layou_marginTop="20dp">
 
         <TextView
-            android:layout_marginStart="10dp"
             android:id="@+id/tvEnderecoEmpresa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="endereco da empresa" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Endereço"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo:" />
+    <androidx.cardview.widget.CardView
+        app:cardBackgroundColor="#FF952B"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layou_marginTop="20dp">
 
         <TextView
-            android:layout_marginStart="10dp"
             android:id="@+id/tvTipoEmpresa"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tipo da emprea" />
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Tipo"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
-    </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
     <Button
         android:id="@+id/btnAvaliar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:text="Avaliar" />
-
-    <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:textSize="35sp"
-        android:layout_marginTop="40dp"
-        android:text="Avaliações" />
-
+        android:background="@drawable/buttonshape"
+        android:shadowColor="#A8A8A8"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="Avaliar"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"/>
 </LinearLayout>
