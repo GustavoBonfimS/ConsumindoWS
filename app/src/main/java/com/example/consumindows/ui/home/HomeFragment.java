@@ -101,6 +101,19 @@ public class HomeFragment extends Fragment {
                                     empresaCV3.setText(lista.get(2).getEmpresa());
                                     break;
                             }
+                            if (lista.size() > 3) {
+                                autor1.setText(lista.get(0).getAutor());
+                                conteudo1.setText(lista.get(0).getConteudo());
+                                empresaCV1.setText(lista.get(0).getEmpresa());
+
+                                autor2.setText(lista.get(1).getAutor());
+                                conteudo2.setText(lista.get(1).getConteudo());
+                                empresaCV2.setText(lista.get(1).getEmpresa());
+
+                                autor3.setText(lista.get(2).getAutor());
+                                conteudo3.setText(lista.get(2).getConteudo());
+                                empresaCV3.setText(lista.get(2).getEmpresa());
+                            }
                         }
                     }
 

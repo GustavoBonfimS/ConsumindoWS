@@ -90,6 +90,11 @@ public class RetrofitConfig {
         @GET("cliente/Avaliacao/Listar")
         Call<List<Avaliacao>> listarAvaliacao();
 
+        @GET("cliente/Avaliacao/Listar/{idempresa}")
+        @Headers("Content-Type: application/json")
+        Call<List<Avaliacao>> listarAvaliacaoDaEmpresa(int idempresa);
+
+
         @POST("cliente/Avaliacao/Inserir")
         @Headers("Content-Type: application/json")
         Call<Avaliacao> inserirAvaliacao(@Body Avaliacao avaliacao);
