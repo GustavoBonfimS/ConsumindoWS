@@ -91,23 +91,6 @@ public class Index extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        /*
-        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(clienteOBJ.getIdcliente());
-        call.enqueue(new Callback<List<Avaliacao>>() {
-            @Override
-            public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
-                // setar texto dos textView
-            }
-
-            @Override
-            public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
-                Log.e("wig", "erro ao fazer request" + t.getMessage());
-            }
-        });
-
-         */
-
-
     }
 
     // não deixar voltar para tela de login

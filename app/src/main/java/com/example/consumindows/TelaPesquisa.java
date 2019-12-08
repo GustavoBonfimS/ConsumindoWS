@@ -63,10 +63,12 @@ public class TelaPesquisa extends AppCompatActivity {
 
                                         empresa = new Empresa();
                                         empresa = lista.get(position);
+                                        String nome = empresa.getLogin();
 
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
                                         telaEmrpes.putExtra("empresa", empresa);
                                         telaEmrpes.putExtra("cliente", cliente);
+                                        telaEmrpes.putExtra("empresaNome", nome);
                                         startActivity(telaEmrpes);
                                     }
                                 });

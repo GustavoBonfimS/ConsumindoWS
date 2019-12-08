@@ -89,10 +89,16 @@ public class SlideshowFragment extends Fragment {
 
                                     empresa = new Empresa();
                                     empresa = lista.get(position);
+                                    String nome = lista.get(position).getLogin();
+                                    // pegando nome da empresa separado poeque
+                                    // o serialize do objeto buga ao passar pra proxima tela
+                                    // e aparece como null
 
                                     Intent telaEmrpes = new Intent(getContext(), telaEmpresa.class);
                                     telaEmrpes.putExtra("empresa", empresa);
                                     telaEmrpes.putExtra("cliente", cliente);
+                                    telaEmrpes.putExtra("empresaNome", nome);
+
                                     startActivity(telaEmrpes);
                                 }
                             });

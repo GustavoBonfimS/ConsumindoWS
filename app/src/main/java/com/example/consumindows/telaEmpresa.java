@@ -2,6 +2,7 @@ package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,6 +25,7 @@ import retrofit2.Response;
 public class telaEmpresa extends AppCompatActivity {
 
     TextView nome;
+    String nomeEmpresa;
     TextView endereco;
     TextView tipo;
     Button avaliar;
@@ -49,15 +51,16 @@ public class telaEmpresa extends AppCompatActivity {
         avaliar = findViewById(R.id.btnAvaliar);
         autor1 = findViewById(R.id.tvAutor1);
         conteudo1 = findViewById(R.id.tvConteudo1);
-        autor2 = findViewById(R.id.tvAutor2);
-        conteudo2 = findViewById(R.id.tvConteudo2);
-        autor3 = findViewById(R.id.tvAutor3);
-        conteudo3 = findViewById(R.id.tvConteudo3);
+        //autor2 = findViewById(R.id.tvAutor2);
+        //conteudo2 = findViewById(R.id.tvConteudo2);
+        //autor3 = findViewById(R.id.tvAutor3);
+        //conteudo3 = findViewById(R.id.tvConteudo3);
+        nomeEmpresa = getIntent().getStringExtra("empresaNome");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
         cliente = (Cliente) getIntent().getSerializableExtra("cliente");
 
-        nome.setText(empresa.getLogin());
+        nome.setText(nomeEmpresa);
         endereco.setText(empresa.getEndereco());
         tipo.setText(empresa.getTipo());
 
@@ -80,11 +83,11 @@ public class telaEmpresa extends AppCompatActivity {
                     autor1.setText(lista.get(0).getAutor());
                     conteudo1.setText(lista.get(0).getConteudo());
 
-                    autor1.setText(lista.get(1).getAutor());
-                    conteudo2.setText(lista.get(1).getConteudo());
+                    //autor1.setText(lista.get(1).getAutor());
+                    //conteudo2.setText(lista.get(1).getConteudo());
 
-                    autor3.setText(lista.get(3).getAutor());;
-                    conteudo3.setText(lista.get(3).getConteudo());
+                    //autor3.setText(lista.get(3).getAutor());;
+                    //conteudo3.setText(lista.get(3).getConteudo());
                 }
             }
 
