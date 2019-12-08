@@ -3,6 +3,7 @@ package com.example.consumindows.ui.slideshow;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import com.example.consumindows.telaEmpresa;
 
 import java.util.List;
 
+import modelo.Cliente;
 import modelo.Empresa;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -36,6 +38,9 @@ public class SlideshowFragment extends Fragment {
 
     private SlideshowViewModel slideshowViewModel;
     Empresa empresa;
+    Cliente cliente;
+    String clienteLogin;
+    Bundle b;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -46,6 +51,22 @@ public class SlideshowFragment extends Fragment {
         slideshowViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
+                b = getActivity().getIntent().getExtras();
+                clienteLogin = b.getString("login");
+
+                Call<Cliente> getCliente = new RetrofitConfig().getWigService().getCliente(clienteLogin);
+                getCliente.enqueue(new Callback<Cliente>() {
+                    @Override
+                    public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                        cliente = response.body();
+                    }
+
+                    @Override
+                    public void onFailure(Call<Cliente> call, Throwable t) {
+                        Log.e("wig", "erro ao fazer request" + t.getMessage());
+                    }
+                });
+
                 Call<List<Empresa>> call = new RetrofitConfig().getWigService().listarEmpresas();
                 call.enqueue(new Callback<List<Empresa>>() {
                     @Override
@@ -71,7 +92,7 @@ public class SlideshowFragment extends Fragment {
 
                                     Intent telaEmrpes = new Intent(getContext(), telaEmpresa.class);
                                     telaEmrpes.putExtra("empresa", empresa);
-                                    // telaEmrpes.putExtra("cliente", cliente);
+                                    telaEmrpes.putExtra("cliente", cliente);
                                     startActivity(telaEmrpes);
                                 }
                             });
@@ -81,7 +102,7 @@ public class SlideshowFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<List<Empresa>> call, Throwable t) {
-
+                        Log.e("wig", "erro ao se conectar com o WS " + t.getMessage());
                     }
                 });
             }

@@ -21,9 +21,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.sql.Date;
+import java.util.List;
 
+import modelo.Avaliacao;
 import modelo.Cliente;
 import modelo.RetrofitConfig;
 import retrofit2.Call;
@@ -34,6 +38,8 @@ public class Index extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     Cliente clienteOBJ;
     private String clienteLogin;
+    TextView autor1;
+    TextView conteudo1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,10 @@ public class Index extends AppCompatActivity {
         setContentView(R.layout.activity_index);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+        autor1 = findViewById(R.id.tvAutor1);
+        conteudo1 = findViewById(R.id.tvConteudo1);
 
         Bundle b = getIntent().getExtras();
         clienteLogin = b.getString("login");

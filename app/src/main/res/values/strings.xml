@@ -25,7 +25,7 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">WIG ? Oque é ?</string>
     <string name="menu_send">Sobre os desenvolvedores</string>
-    <string name="Conteúdo">Ótimo atendimento, os produtos de boa qualidade pelo que pude ver, recomendo!</string>
+    <string name="Conteúdo">Conteudo</string>
     <string name="Usuario">Gustavo Bonfim</string>
     <string name="NomeEmpresa">Açai Unitoledo</string>
     <string name="avaliacao">Avaliações</string>
@@ -40,4 +40,15 @@
     <string name="pagina_inicial">Pagina inicial</string>
     <string name="sair">Sair</string>
     <string name="where_i_go">Where I Go</string>
+    <string name="nome">nome</string>
+    <string name="endereco">endereco:</string>
+    <string name="endereco_da_empresa">endereco da empresa</string>
+    <string name="tipo">Tipo:</string>
+    <string name="tipo_da_emprea">Tipo da emprea</string>
+    <string name="avaliar_empresa">Avaliar empresa</string>
+    <string name="autor">Autor</string>
+    <string name="avalia_es">Avaliações</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="avalia_es_recentes">Avaliações recentes</string>
+    <string name="empresa">Empresa</string>
 </resources>
