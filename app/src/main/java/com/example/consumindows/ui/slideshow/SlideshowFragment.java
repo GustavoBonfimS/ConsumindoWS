@@ -102,7 +102,7 @@ public class SlideshowFragment extends Fragment {
 
                     @Override
                     public void onFailure(Call<List<Empresa>> call, Throwable t) {
-
+                        Log.e("wig", "erro ao se conectar com o WS " + t.getMessage());
                     }
                 });
             }
