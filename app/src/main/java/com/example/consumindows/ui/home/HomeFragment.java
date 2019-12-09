@@ -64,6 +64,7 @@ public class HomeFragment extends Fragment {
                                 case 0:
                                     autor1.setText("nenhuma avaliação foi feita hoje...");
                                     conteudo1.setText("Avaliações recentes aparecerão aqui");
+                                    empresaCV1.setVisibility(View.INVISIBLE);
 
                                     cardView2.setVisibility(View.GONE);
                                     cardView3.setVisibility(View.GONE);

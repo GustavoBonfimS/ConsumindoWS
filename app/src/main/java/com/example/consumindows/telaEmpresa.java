@@ -69,15 +69,6 @@ public class telaEmpresa extends AppCompatActivity {
 
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
-            responder1.setVisibility(View.VISIBLE);
-            responder2.setVisibility(View.VISIBLE);
-            responder3.setVisibility(View.VISIBLE);
-            responder1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(telaEmpresa.this, "funcionando...", Toast.LENGTH_SHORT).show();
-                }
-            });
         } else if (getIntent().getStringExtra("status").equals("empresa")) {
             responder1.setVisibility(View.VISIBLE);
             responder2.setVisibility(View.VISIBLE);
