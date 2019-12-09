@@ -6,6 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- A PRIMEIRA TELA FEITA, o começo de tudo
+    não foi apagada por motivo de nostalgia de começo de projeto,
+    é notavel a linha de aprendizado gradativa que se cria com a pratica -->
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="219dp"

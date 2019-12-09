@@ -87,6 +87,9 @@ public class RetrofitConfig {
 
         //---------------------------------Avaliação------------------------------------------
 
+        @GET("cliente/Avaliacao/minhas/{idcliente}")
+        Call<List<Avaliacao>> minhasAvaliacoes(@Path("idcliente") int idcliente);
+
         @GET("cliente/Avaliacao/Listar")
         Call<List<Avaliacao>> listarAvaliacao();
 
@@ -116,6 +119,10 @@ public class RetrofitConfig {
         @GET("empresa/get/{CNPJ}")
         @Headers("Content-Type: application/json")
         Call<Empresa> getEmpresa(@Path("CNPJ") String cnpj);
+
+        @GET("empresa/get/id/{idempresa}")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> getEmpresaPeloID(@Path("idempresa") int idempresa);
 
         @GET("empresa/Listar")
         @Headers("Content-Type: application/json")

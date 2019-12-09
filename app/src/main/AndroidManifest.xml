@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".InfoAvaliacaoActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,12 +28,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CadastrocomLayout" />
         <activity android:name=".telaEmpresa" />
-        <activity android:name=".testeIntente" />
         <activity android:name=".CadastrarUsuario" />
         <activity android:name=".TesteAvaliacao" />
-        <activity android:name=".loginActivity">
-
-        </activity>
+        <activity android:name=".loginActivity" />
         <activity android:name=".MainActivity" />
     </application>
 
