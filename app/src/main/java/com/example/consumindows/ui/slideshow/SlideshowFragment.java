@@ -95,9 +95,11 @@ public class SlideshowFragment extends Fragment {
                                     // e aparece como null
 
                                     Intent telaEmrpes = new Intent(getContext(), telaEmpresa.class);
+                                    String status = "logado";
                                     telaEmrpes.putExtra("empresa", empresa);
                                     telaEmrpes.putExtra("cliente", cliente);
                                     telaEmrpes.putExtra("empresaNome", nome);
+                                    telaEmrpes.putExtra("status", status);
 
                                     startActivity(telaEmrpes);
                                 }

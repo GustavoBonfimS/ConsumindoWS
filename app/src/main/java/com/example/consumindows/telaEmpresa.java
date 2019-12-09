@@ -67,6 +67,7 @@ public class telaEmpresa extends AppCompatActivity {
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
 
+
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
         } else if (getIntent().getStringExtra("status").equals("empresa")) {
@@ -80,7 +81,7 @@ public class telaEmpresa extends AppCompatActivity {
                 }
             });
             avaliar.setVisibility(View.GONE);
-            empresaLogada = (Empresa) getIntent().getSerializableExtra("empresa");
+            empresaLogada = (Empresa) getIntent().getSerializableExtra("empresaLogada");
         } else avaliar.setVisibility(View.GONE);
 
         nome.setText(nomeEmpresa);
