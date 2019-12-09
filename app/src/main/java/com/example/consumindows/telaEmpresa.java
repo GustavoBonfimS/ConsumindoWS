@@ -31,6 +31,7 @@ public class telaEmpresa extends AppCompatActivity {
     Button avaliar;
     Empresa empresa;
     Cliente cliente;
+    String status;
     TextView autor1;
     TextView conteudo1;
     TextView autor2;
@@ -58,8 +59,11 @@ public class telaEmpresa extends AppCompatActivity {
         nomeEmpresa = getIntent().getStringExtra("empresaNome");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
-        cliente = (Cliente) getIntent().getSerializableExtra("cliente");
-
+        if (getIntent().getStringExtra("status").equals("logado")) {
+            cliente = (Cliente) getIntent().getSerializableExtra("cliente");
+        } else {
+            avaliar.setVisibility(View.GONE);
+        }
         nome.setText(nomeEmpresa);
         endereco.setText(empresa.getEndereco());
         tipo.setText(empresa.getTipo());

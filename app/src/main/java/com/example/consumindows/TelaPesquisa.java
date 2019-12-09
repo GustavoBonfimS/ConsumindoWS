@@ -27,6 +27,7 @@ public class TelaPesquisa extends AppCompatActivity {
     ListView listView;
     Empresa empresa;
     Cliente cliente;
+    String status;
 
     public void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -34,8 +35,11 @@ public class TelaPesquisa extends AppCompatActivity {
         setContentView(R.layout.activity_tela_pesquisa);
 
         listView = findViewById(R.id.lvPesquisa);
-        cliente = (Cliente) getIntent().getSerializableExtra("cliente");
 
+        if (getIntent().getStringExtra("status").equals("logado")) {
+            cliente = (Cliente) getIntent().getSerializableExtra("cliente");
+            status = "logado";
+        } else status = "convidado";
         final SearchView pesquisar = (SearchView) findViewById(R.id.search);
         pesquisar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -67,8 +71,14 @@ public class TelaPesquisa extends AppCompatActivity {
 
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
                                         telaEmrpes.putExtra("empresa", empresa);
-                                        telaEmrpes.putExtra("cliente", cliente);
                                         telaEmrpes.putExtra("empresaNome", nome);
+
+                                        if (status.equals("logado")) {
+                                            telaEmrpes.putExtra("cliente", cliente);
+                                            telaEmrpes.putExtra("status", status);
+                                        } else {
+                                            telaEmrpes.putExtra("status", status);
+                                        }
                                         startActivity(telaEmrpes);
                                     }
                                 });

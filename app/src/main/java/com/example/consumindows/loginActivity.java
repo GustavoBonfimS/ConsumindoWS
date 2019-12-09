@@ -23,6 +23,7 @@ public class loginActivity extends AppCompatActivity {
 
     private EditText etLogin;
     private EditText etSenha;
+    TextView convidado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class loginActivity extends AppCompatActivity {
 
         etLogin = findViewById(R.id.etLogin);
         etSenha = findViewById(R.id.etSenha);
+        convidado = findViewById(R.id.tvConvidado);
 
         final Button btnLogin = findViewById(R.id.btnLogin);
         final TextView cadastrar = findViewById(R.id.tvCadastrar);
@@ -78,6 +80,17 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent telaCadastro = new Intent(loginActivity.this, CadastrarUsuario.class);
                 startActivity(telaCadastro);
+            }
+        });
+
+        convidado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaIndex = new Intent(loginActivity.this, Index.class);
+                Bundle param = new Bundle();
+                param.putString("login", "convidado");
+                telaIndex.putExtras(param);
+                startActivity(telaIndex);
             }
         });
 

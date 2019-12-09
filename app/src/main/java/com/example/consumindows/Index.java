@@ -23,6 +23,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.sql.Date;
 import java.util.List;
@@ -38,6 +39,7 @@ public class Index extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     Cliente clienteOBJ;
     private String clienteLogin;
+    String status;
     TextView autor1;
     TextView conteudo1;
 
@@ -48,12 +50,18 @@ public class Index extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         autor1 = findViewById(R.id.tvAutor1);
         conteudo1 = findViewById(R.id.tvConteudo1);
 
         Bundle b = getIntent().getExtras();
-        clienteLogin = b.getString("login");
+        if (b.getString("login").equals("convidado")) {
+            Toast.makeText(this, "Você entrou como convidado", Toast.LENGTH_LONG).show();
+            toolbar.setVisibility(View.GONE);
+            status = "convidado";
+        } else {
+            clienteLogin = b.getString("login");
+            status = "logado";
+        }
 
         Call<Cliente> call = new RetrofitConfig().getWigService().getCliente(clienteLogin);
         call.enqueue(new Callback<Cliente>() {
@@ -74,6 +82,7 @@ public class Index extends AppCompatActivity {
             public void onClick(View view) {
                 Intent telaPesquisa = new Intent(Index.this, TelaPesquisa.class);
                 telaPesquisa.putExtra("cliente", clienteOBJ);
+                telaPesquisa.putExtra("status", status);
                 startActivity(telaPesquisa);
             }
         });
@@ -93,10 +102,13 @@ public class Index extends AppCompatActivity {
 
     }
 
-    // não deixar voltar para tela de login
+    // não deixar voltar para tela de login ao pressionar botao voltar
+    // (caso esteja logado)
     @Override
     public void onBackPressed() {
-
+        if (status.equals("convidado")) {
+            finish();
+        }
     }
 
     @Override
