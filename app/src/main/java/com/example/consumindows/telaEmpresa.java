@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -31,13 +32,16 @@ public class telaEmpresa extends AppCompatActivity {
     Button avaliar;
     Empresa empresa;
     Cliente cliente;
-    String status;
+    TextView responder1;
+    TextView responder2;
+    TextView responder3;
     TextView autor1;
     TextView conteudo1;
     TextView autor2;
     TextView conteudo2;
     TextView autor3;
     TextView conteudo3;
+    Empresa empresaLogada;
 
 
     @Override
@@ -52,18 +56,42 @@ public class telaEmpresa extends AppCompatActivity {
         avaliar = findViewById(R.id.btnAvaliar);
         autor1 = findViewById(R.id.tvAutor1);
         conteudo1 = findViewById(R.id.tvConteudo1);
-        //autor2 = findViewById(R.id.tvAutor2);
-        //conteudo2 = findViewById(R.id.tvConteudo2);
-        //autor3 = findViewById(R.id.tvAutor3);
-        //conteudo3 = findViewById(R.id.tvConteudo3);
+        autor2 = findViewById(R.id.tvAutor2);
+        conteudo2 = findViewById(R.id.tvConteudo2);
+        autor3 = findViewById(R.id.tvAutor3);
+        conteudo3 = findViewById(R.id.tvConteudo3);
+        responder1 = findViewById(R.id.tvResponder1);
+        responder2 = findViewById(R.id.tvResponder2);
+        responder3 = findViewById(R.id.tvResponder3);
         nomeEmpresa = getIntent().getStringExtra("empresaNome");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
+
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
-        } else {
+            responder1.setVisibility(View.VISIBLE);
+            responder2.setVisibility(View.VISIBLE);
+            responder3.setVisibility(View.VISIBLE);
+            responder1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(telaEmpresa.this, "funcionando...", Toast.LENGTH_SHORT).show();
+                }
+            });
+        } else if (getIntent().getStringExtra("status").equals("empresa")) {
+            responder1.setVisibility(View.VISIBLE);
+            responder2.setVisibility(View.VISIBLE);
+            responder3.setVisibility(View.VISIBLE);
+            responder1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(telaEmpresa.this, "funcionando...", Toast.LENGTH_SHORT).show();
+                }
+            });
             avaliar.setVisibility(View.GONE);
-        }
+            empresaLogada = (Empresa) getIntent().getSerializableExtra("empresa");
+        } else avaliar.setVisibility(View.GONE);
+
         nome.setText(nomeEmpresa);
         endereco.setText(empresa.getEndereco());
         tipo.setText(empresa.getTipo());
@@ -87,11 +115,11 @@ public class telaEmpresa extends AppCompatActivity {
                     autor1.setText(lista.get(0).getAutor());
                     conteudo1.setText(lista.get(0).getConteudo());
 
-                    //autor1.setText(lista.get(1).getAutor());
-                    //conteudo2.setText(lista.get(1).getConteudo());
+                    autor2.setText(lista.get(1).getAutor());
+                    conteudo2.setText(lista.get(1).getConteudo());
 
-                    //autor3.setText(lista.get(3).getAutor());;
-                    //conteudo3.setText(lista.get(3).getConteudo());
+                    autor3.setText(lista.get(3).getAutor());;
+                    conteudo3.setText(lista.get(3).getConteudo());
                 }
             }
 

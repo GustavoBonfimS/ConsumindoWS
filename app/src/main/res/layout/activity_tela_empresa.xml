@@ -69,7 +69,7 @@
             android:shadowDx="0"
             android:shadowDy="0"
             android:shadowRadius="5"
-            android:text="Avaliar"
+            android:text="@string/avaliar"
             android:textColor="#FFFFFF"
             android:textSize="30sp" />
 
@@ -78,7 +78,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="20dp"
-            android:text="AVALIAÇÕES"
+            android:text="@string/avaliacoesM"
             android:textSize="35sp" />
 
         <androidx.cardview.widget.CardView
@@ -88,20 +88,89 @@
             app:cardBackgroundColor="@color/laranjaPrincipal">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/tvResponder1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="responder"
+                android:visibility="gone"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:id="@+id/tvAutor1"
                 android:text="Autor"
                 android:textSize="20sp" />
 
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:id="@+id/tvConteudo1"
                 android:layout_marginTop="30dp"
                 android:text="Conteudo"
                 android:textSize="20sp" />
         </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/laranjaPrincipal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:id="@+id/tvResponder2"
+                android:layout_height="wrap_content"
+                android:text="responder"
+                android:visibility="gone"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/tvAutor2"
+                android:text="Autor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/tvConteudo2"
+                android:layout_marginTop="30dp"
+                android:text="Conteudo"
+                android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/laranjaPrincipal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tvResponder3"
+                android:text="responder"
+                android:visibility="gone"
+                android:layout_gravity="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/tvAutor3"
+                android:text="Autor"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:id="@+id/tvConteudo3"
+                android:layout_marginTop="30dp"
+                android:text="Conteudo"
+                android:textSize="20sp" />
+        </androidx.cardview.widget.CardView>
+
 
     </LinearLayout>
 

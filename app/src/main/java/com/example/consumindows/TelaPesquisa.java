@@ -28,6 +28,7 @@ public class TelaPesquisa extends AppCompatActivity {
     Empresa empresa;
     Cliente cliente;
     String status;
+    Empresa empresaLogada;
 
     public void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -72,12 +73,14 @@ public class TelaPesquisa extends AppCompatActivity {
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
                                         telaEmrpes.putExtra("empresa", empresa);
                                         telaEmrpes.putExtra("empresaNome", nome);
+                                        telaEmrpes.putExtra("status", status);
 
                                         if (status.equals("logado")) {
                                             telaEmrpes.putExtra("cliente", cliente);
-                                            telaEmrpes.putExtra("status", status);
-                                        } else {
-                                            telaEmrpes.putExtra("status", status);
+                                        } else if (status.equals("empresa")) {
+                                            empresaLogada = (Empresa) getIntent()
+                                                    .getSerializableExtra("empresa");
+                                            telaEmrpes.putExtra("empresaLogada", empresaLogada);
                                         }
                                         startActivity(telaEmrpes);
                                     }
@@ -102,7 +105,6 @@ public class TelaPesquisa extends AppCompatActivity {
                 return false;
             }
         });
-
 
 
     }

@@ -30,7 +30,9 @@ import java.util.List;
 
 import modelo.Avaliacao;
 import modelo.Cliente;
+import modelo.Empresa;
 import modelo.RetrofitConfig;
+import modelo.Usuario;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,12 +44,13 @@ public class Index extends AppCompatActivity {
     String status;
     TextView autor1;
     TextView conteudo1;
+    Empresa empresa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_index);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         autor1 = findViewById(R.id.tvAutor1);
@@ -63,15 +66,53 @@ public class Index extends AppCompatActivity {
             status = "logado";
         }
 
-        Call<Cliente> call = new RetrofitConfig().getWigService().getCliente(clienteLogin);
-        call.enqueue(new Callback<Cliente>() {
+        // buscar usuario pra ver se o usuario logado é uma empresa
+        Call<Usuario> buscarUsuario = new RetrofitConfig().getWigService().buscarUsuario(clienteLogin);
+        buscarUsuario.enqueue(new Callback<Usuario>() {
             @Override
-            public void onResponse(Call<Cliente> call, Response<Cliente> response) {
-                clienteOBJ = response.body();
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.body().getPerfil().equals("empresa")) {
+                    // caso for, buscar objeto completo de empresa
+                    status = "empresa";
+                    toolbar.setVisibility(View.GONE);
+
+                    Call<Empresa> getEmpresa = new RetrofitConfig()
+                            .getWigService().getEmpresaPeloNome(clienteLogin);
+                    getEmpresa.enqueue(new Callback<Empresa>() {
+                        @Override
+                        public void onResponse(Call<Empresa> call, Response<Empresa> response) {
+                            empresa = response.body();
+                        }
+
+                        @Override
+                        public void onFailure(Call<Empresa> call, Throwable t) {
+                            Log.e("wig", "erro ao fazer request" + t.getMessage());
+                        }
+                    });
+                } else {
+                    // caso não for empresa sera buscado o objeto de usuario
+                    Call<Cliente> getCliente = new RetrofitConfig().getWigService().getCliente(clienteLogin);
+                    getCliente.enqueue(new Callback<Cliente>() {
+                        @Override
+                        public void onResponse(Call<Cliente> call, Response<Cliente> response) {
+                            if (response.code() == 200 || response.isSuccessful()) {
+                                if (response.body() != null) {
+                                    clienteOBJ = response.body();
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Cliente> call, Throwable t) {
+                            Log.e("wig", "erro ao fazer request" + t.getMessage());
+                        }
+                    });
+
+                }
             }
 
             @Override
-            public void onFailure(Call<Cliente> call, Throwable t) {
+            public void onFailure(Call<Usuario> call, Throwable t) {
                 Log.e("wig", "erro ao fazer request" + t.getMessage());
             }
         });
@@ -83,6 +124,10 @@ public class Index extends AppCompatActivity {
                 Intent telaPesquisa = new Intent(Index.this, TelaPesquisa.class);
                 telaPesquisa.putExtra("cliente", clienteOBJ);
                 telaPesquisa.putExtra("status", status);
+                if (empresa != null) {
+                    // caso seja empresa sera passado o obj para a tela de pesquisa
+                    telaPesquisa.putExtra("empresa", empresa);
+                }
                 startActivity(telaPesquisa);
             }
         });
