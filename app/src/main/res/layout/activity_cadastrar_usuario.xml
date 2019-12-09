@@ -32,8 +32,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
+            android:maxLength="15"
             android:layout_marginTop="30dp"
-            android:autofillHints="@string/senha"
+            android:autofillHints="@string/login"
             android:hint="@string/login"
             android:inputType="text" />
 
@@ -43,9 +44,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textAlignment="center"
+            android:maxLength="16"
             android:layout_marginTop="20dp"
             android:hint="@string/senha"
             android:inputType="textPassword" />
+
+        <CheckBox
+            android:id="@+id/senhaCheckbox"
+            android:layout_gravity="center"
+            android:text="Ver Senha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -64,6 +73,7 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:layout_marginTop="20dp"
+            android:maxLength="11"
             android:hint="@string/cpf"
             android:inputType="number" />
 

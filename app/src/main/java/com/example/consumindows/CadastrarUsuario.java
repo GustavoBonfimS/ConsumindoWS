@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,6 +29,7 @@ public class CadastrarUsuario extends AppCompatActivity {
     EditText etEmail;
     EditText etSenha;
     EditText etCpf;
+    CheckBox verSenha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +37,26 @@ public class CadastrarUsuario extends AppCompatActivity {
         getSupportActionBar().hide(); // esconder barra de titulo
         setContentView(R.layout.activity_cadastrar_usuario);
 
+        verSenha = findViewById(R.id.senhaCheckbox);
         final Button btncadastrar = findViewById(R.id.btnCadastrar);
         etEmail = findViewById(R.id.etEmail);
         etLogin = findViewById(R.id.etLogin);
         etSenha = findViewById(R.id.etSenha);
         etCpf = findViewById(R.id.etCPF);
         final Cliente c = new Cliente();
+
+        verSenha.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked) {
+                    // show password
+                    etSenha.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else {
+                    // hide password
+                    etSenha.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                }
+            }
+        });
 
         btncadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
