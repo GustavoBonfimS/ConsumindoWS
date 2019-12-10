@@ -2,6 +2,7 @@ package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -46,6 +47,7 @@ public class telaEmpresa extends AppCompatActivity {
     CardView cardView1;
     CardView cardView2;
     CardView cardView3;
+    SwipeRefreshLayout refreshLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class telaEmpresa extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_tela_empresa);
 
+        refreshLayout = findViewById(R.id.swipeRefreshEmpresa);
         nome = findViewById(R.id.tvNomeEmpresa);
         endereco = findViewById(R.id.tvEnderecoEmpresa);
         tipo = findViewById(R.id.tvTipoEmpresa);
@@ -214,6 +217,73 @@ public class telaEmpresa extends AppCompatActivity {
                 telaResposta.putExtra("autor", nomeEmpresa);
                 telaResposta.putExtra("empresa", empresaLogada);
                 startActivity(telaResposta);
+            }
+        });
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().listarAvaliacaoDaEmpresa(empresa.getIdempresa());
+                call.enqueue(new Callback<List<Avaliacao>>() {
+                    @Override
+                    public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                        if (response.code() == 200 || response.isSuccessful()) {
+                            refreshLayout.setRefreshing(false);
+                            List<Avaliacao> lista = response.body();
+                            switch (lista.size()) {
+                                case 0:
+                                    autor1.setText("nenhuma avaliação foi feita hoje...");
+                                    conteudo1.setText("Avaliações recentes aparecerão aqui");
+
+                                    cardView2.setVisibility(View.GONE);
+                                    cardView3.setVisibility(View.GONE);
+                                    break;
+
+                                case 1: // caso a lista só tenha 1 elemento
+                                    autor1.setText(lista.get(0).getAutor());
+                                    conteudo1.setText(lista.get(0).getConteudo());
+
+                                    cardView2.setVisibility(View.GONE);
+                                    cardView3.setVisibility(View.GONE);
+                                    break;
+                                case 2: // caso a lista só tenha 2 elemento
+                                    autor1.setText(lista.get(0).getAutor());
+                                    conteudo1.setText(lista.get(0).getConteudo());
+
+                                    autor2.setText(lista.get(1).getAutor());
+                                    conteudo2.setText(lista.get(1).getConteudo());
+
+                                    cardView3.setVisibility(View.GONE);
+                                    break;
+                                case 3: // caso a lista tenha 3 elementos
+                                    autor1.setText(lista.get(0).getAutor());
+                                    conteudo1.setText(lista.get(0).getConteudo());
+
+                                    autor2.setText(lista.get(1).getAutor());
+                                    conteudo2.setText(lista.get(1).getConteudo());
+
+                                    autor3.setText(lista.get(2).getAutor());
+                                    conteudo3.setText(lista.get(2).getConteudo());
+                                    break;
+                            }
+                            if (lista.size() > 3) {
+                                autor1.setText(lista.get(0).getAutor());
+                                conteudo1.setText(lista.get(0).getConteudo());
+
+                                autor2.setText(lista.get(1).getAutor());
+                                conteudo2.setText(lista.get(1).getConteudo());
+
+                                autor3.setText(lista.get(2).getAutor());
+                                conteudo3.setText(lista.get(2).getConteudo());
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                        Log.e("wig", "erro ao se comunicar com o WS: " + t.getMessage());
+                    }
+                });
             }
         });
     }

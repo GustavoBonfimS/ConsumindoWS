@@ -15,6 +15,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.consumindows.R;
 
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment {
         Bundle b = getActivity().getIntent().getExtras();
         final String clienteLogin = b.getString("login");
         final TextView autor2 = root.findViewById(R.id.tvAutor3);
+        final SwipeRefreshLayout refreshLayout = root.findViewById(R.id.swipeRefreshHome);
         final TextView conteudo2 = root.findViewById(R.id.tvConteudo2);
         final ConstraintLayout cardView2 = root.findViewById(R.id.cardView2);
         final TextView empresaCV1 = root.findViewById(R.id.tvEmpresaCV1);
@@ -121,6 +123,82 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
                         Log.e("wig", "erro ao fazer request" + t.getMessage());
+                    }
+                });
+
+                refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().atualizarIndex(clienteLogin);
+                        call.enqueue(new Callback<List<Avaliacao>>() {
+                            @Override
+                            public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
+                                if (response.code() == 200 || response.isSuccessful()) {
+                                    List<Avaliacao> lista = response.body();
+                                    refreshLayout.setRefreshing(false);
+                                    switch (lista.size()) {
+                                        case 0:
+                                            autor1.setText("nenhuma avaliação foi feita hoje...");
+                                            conteudo1.setText("Avaliações recentes aparecerão aqui");
+                                            empresaCV1.setVisibility(View.INVISIBLE);
+
+                                            cardView2.setVisibility(View.GONE);
+                                            cardView3.setVisibility(View.GONE);
+                                            break;
+
+                                        case 1: // caso a lista só tenha 1 elemento
+                                            autor1.setText(lista.get(0).getAutor());
+                                            conteudo1.setText(lista.get(0).getConteudo());
+                                            empresaCV1.setText(lista.get(0).getEmpresa());
+                                            // Toast.makeText(getContext(), "apenas 1 nova avaliação", Toast.LENGTH_SHORT).show();
+                                            cardView2.setVisibility(View.GONE);
+                                            cardView3.setVisibility(View.GONE);
+                                            break;
+                                        case 2: // caso a lista só tenha 2 elemento
+                                            autor1.setText(lista.get(0).getAutor());
+                                            conteudo1.setText(lista.get(0).getConteudo());
+                                            empresaCV1.setText(lista.get(0).getEmpresa());
+
+                                            autor2.setText(lista.get(1).getAutor());
+                                            conteudo2.setText(lista.get(1).getConteudo());
+                                            empresaCV2.setText(lista.get(1).getEmpresa());
+                                            cardView3.setVisibility(View.GONE);;
+                                            break;
+                                        case 3: // caso a lista tenha 3 elementos
+                                            autor1.setText(lista.get(0).getAutor());
+                                            conteudo1.setText(lista.get(0).getConteudo());
+                                            empresaCV1.setText(lista.get(0).getEmpresa());
+
+                                            autor2.setText(lista.get(1).getAutor());
+                                            conteudo2.setText(lista.get(1).getConteudo());
+                                            empresaCV2.setText(lista.get(1).getEmpresa());
+
+                                            autor3.setText(lista.get(2).getAutor());
+                                            conteudo3.setText(lista.get(2).getConteudo());
+                                            empresaCV3.setText(lista.get(2).getEmpresa());
+                                            break;
+                                    }
+                                    if (lista.size() > 3) {
+                                        autor1.setText(lista.get(0).getAutor());
+                                        conteudo1.setText(lista.get(0).getConteudo());
+                                        empresaCV1.setText(lista.get(0).getEmpresa());
+
+                                        autor2.setText(lista.get(1).getAutor());
+                                        conteudo2.setText(lista.get(1).getConteudo());
+                                        empresaCV2.setText(lista.get(1).getEmpresa());
+
+                                        autor3.setText(lista.get(2).getAutor());
+                                        conteudo3.setText(lista.get(2).getConteudo());
+                                        empresaCV3.setText(lista.get(2).getEmpresa());
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<List<Avaliacao>> call, Throwable t) {
+                                Log.e("wig", "erro ao fazer request" + t.getMessage());
+                            }
+                        });
                     }
                 });
             }
