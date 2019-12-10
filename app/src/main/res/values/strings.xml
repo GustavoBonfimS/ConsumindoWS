@@ -48,9 +48,14 @@
     <string name="avaliar_empresa">Avaliar empresa</string>
     <string name="autor">Autor</string>
     <string name="avalia_es">Avaliações</string>
-    <string name="avaliar">Avaliar</string>
     <string name="avalia_es_recentes">Avaliações recentes</string>
     <string name="empresa">Empresa</string>
     <string name="informa_es_da_avalia_o">Informações da avaliação</string>
     <string name="entrar_convidado">Ou entre como convidado (apenas visualização)</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="avaliacoesM">AVALIAÇÕES</string>
+    <string name="responder_avaliacao">Responder Avaliacao</string>
+    <string name="tbnResponder">Responder</string>
+    <string name="voltar">voltar</string>
+    <string name="responder">responder</string>
 </resources>

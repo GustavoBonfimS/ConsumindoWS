@@ -1,10 +1,13 @@
 package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 
@@ -22,6 +25,9 @@ public class InfoAvaliacaoActivity extends AppCompatActivity {
     TextView conteudo;
     TextView data;
     TextView hora;
+    CardView respostaCV;
+    TextView autorResposta;
+    TextView conteudoResposta;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +39,9 @@ public class InfoAvaliacaoActivity extends AppCompatActivity {
         conteudo = findViewById(R.id.tvConteudo);
         data = findViewById(R.id.tvDAta);
         hora = findViewById(R.id.tvHora);
+        respostaCV = findViewById(R.id.respostaCV);
+        autorResposta = findViewById(R.id.tvAutorResposta);
+        conteudoResposta = findViewById(R.id.tvConteudoResposta);
 
         avalicao = (Avaliacao) getIntent().getSerializableExtra("avaliacao");
 
@@ -60,5 +69,26 @@ public class InfoAvaliacaoActivity extends AppCompatActivity {
             }
         });
 
+        Call<Avaliacao> resposta = new RetrofitConfig().getWigService().getResposta(avalicao.getIdavaliacao());
+        resposta.enqueue(new Callback<Avaliacao>() {
+            @Override
+            public void onResponse(Call<Avaliacao> call, Response<Avaliacao> response) {
+                if (response.code() == 200 || response.isSuccessful()) {
+                    if (response.body() != null) {
+                        respostaCV.setVisibility(View.VISIBLE);
+                        autorResposta.setText(response.body().getAutor());
+                        conteudoResposta.setText(response.body().getConteudo());
+                    } else {
+                        Toast.makeText(InfoAvaliacaoActivity.this
+                                , "A empresa ainda não deu nenhuma resposta", Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Avaliacao> call, Throwable t) {
+                Log.e("wig", "erro ao fazer request" + t.getMessage());
+            }
+        });
     }
 }

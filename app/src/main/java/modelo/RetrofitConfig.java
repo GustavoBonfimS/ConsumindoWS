@@ -90,21 +90,19 @@ public class RetrofitConfig {
         @GET("cliente/Avaliacao/minhas/{idcliente}")
         Call<List<Avaliacao>> minhasAvaliacoes(@Path("idcliente") int idcliente);
 
+        @GET("cliente/Avaliacao/Resposta/get/{idavaliacao}")
+        Call<Avaliacao> getResposta(@Path("idavaliacao") int idavaliacao);
+
         @GET("cliente/Avaliacao/Listar")
         Call<List<Avaliacao>> listarAvaliacao();
 
         @GET("cliente/Avaliacao/Listar/{idempresa}")
         @Headers("Content-Type: application/json")
-        Call<List<Avaliacao>> listarAvaliacaoDaEmpresa(int idempresa);
-
+        Call<List<Avaliacao>> listarAvaliacaoDaEmpresa(@Path("idempresa") int idempresa);
 
         @POST("cliente/Avaliacao/Inserir")
         @Headers("Content-Type: application/json")
         Call<Avaliacao> inserirAvaliacao(@Body Avaliacao avaliacao);
-
-        @POST("cliente/Avaliacao/Responder")
-        @Headers("Content-Type: application/json")
-        Call<Avaliacao> responderAvaliacao(@Body Avaliacao avaliacao);
 
         @GET("cliente/Avaliacao/get/{conteudo}")
         @Headers("Content-Type: application/json")
@@ -124,6 +122,10 @@ public class RetrofitConfig {
         @Headers("Content-Type: application/json")
         Call<Empresa> getEmpresaPeloID(@Path("idempresa") int idempresa);
 
+        @GET("empresa/get/nome/{nome}")
+        @Headers("Content-Type: application/json")
+        Call<Empresa> getEmpresaPeloNome(@Path("nome") String nome);
+
         @GET("empresa/Listar")
         @Headers("Content-Type: application/json")
         Call<List<Empresa>> listarEmpresas();
@@ -131,6 +133,10 @@ public class RetrofitConfig {
         @GET("empresa/pesquisa/{empresa}")
         @Headers("Content-Type: application/json")
         Call<List<Empresa>> pesquisa(@Path("empresa") String empresa);
+
+        @POST("cliente/Avaliacao/Responder")
+        @Headers("Content-Type: application/json")
+        Call<String> responderAvaliacao(@Body Avaliacao resposta);
 
     }
 

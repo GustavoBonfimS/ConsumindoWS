@@ -49,7 +49,6 @@ public class loginActivity extends AppCompatActivity {
                     call.enqueue(new Callback<String>() {
                         @Override
                         public void onResponse(Call<String> call, Response<String> response) {
-                            // status.setText(response.body());
 
                             if (response.body().equals("true") && response.isSuccessful()) {
                                 Intent telaIndex = new Intent(loginActivity.this, Index.class);
