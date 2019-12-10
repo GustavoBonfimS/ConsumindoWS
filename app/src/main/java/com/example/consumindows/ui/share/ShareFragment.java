@@ -27,7 +27,11 @@ public class ShareFragment extends Fragment {
         shareViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-                textView.setText(s);
+                textView.setText("Quem somos nós? \n" +
+                        "O Where i Go conta com um time de desenvolvedores jovens." +
+                        " Felipe Ribeiro, 19, Gustavo Bonfim, 18, João Vitor Cassiano," +
+                        " 17 e Luís Carlos Rodrigues, 20; Os mesmos Cursam o 2 semestre do ensino " +
+                        "superior em Análise e Desenvolvimento de Sistemas.");
             }
         });
         return root;
