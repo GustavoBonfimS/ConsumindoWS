@@ -83,6 +83,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
+            android:id="@+id/empresaCV1"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/laranjaPrincipal">
@@ -91,7 +92,7 @@
                 android:id="@+id/tvResponder1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="responder"
+                android:text="@string/responder"
                 android:visibility="invisible"
                 android:layout_gravity="end"/>
 
@@ -114,6 +115,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/empresaCV2"
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/laranjaPrincipal">
 
@@ -121,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:id="@+id/tvResponder2"
                 android:layout_height="wrap_content"
-                android:text="responder"
+                android:text="@string/responder"
                 android:visibility="invisible"
                 android:layout_gravity="end"/>
 
@@ -144,6 +146,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/empresaCV3"
             android:layout_marginTop="20dp"
             app:cardBackgroundColor="@color/laranjaPrincipal">
 
@@ -151,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tvResponder3"
-                android:text="responder"
+                android:text="@string/responder"
                 android:visibility="invisible"
                 android:layout_gravity="end"/>
 

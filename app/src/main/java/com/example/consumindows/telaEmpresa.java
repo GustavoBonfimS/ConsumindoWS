@@ -1,6 +1,7 @@
 package com.example.consumindows;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -42,6 +43,9 @@ public class telaEmpresa extends AppCompatActivity {
     TextView autor3;
     TextView conteudo3;
     Empresa empresaLogada;
+    CardView cardView1;
+    CardView cardView2;
+    CardView cardView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,12 +66,16 @@ public class telaEmpresa extends AppCompatActivity {
         responder1 = findViewById(R.id.tvResponder1);
         responder2 = findViewById(R.id.tvResponder2);
         responder3 = findViewById(R.id.tvResponder3);
+        cardView1 = findViewById(R.id.empresaCV1);
+        cardView2 = findViewById(R.id.empresaCV2);
+        cardView3 = findViewById(R.id.empresaCV3);
         nomeEmpresa = getIntent().getStringExtra("empresaNome");
         final String nomeEmpresaLogada = getIntent().getStringExtra("loginEmpresaLogada");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
 
 
+        // verifica o status do usuario logado (empresa, usuario normal ou convidado)
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
         } else if (getIntent().getStringExtra("status").equals("empresa")) {
@@ -100,20 +108,58 @@ public class telaEmpresa extends AppCompatActivity {
         });
 
         // setar conteudo das avaliacoes mostradas na tela
-        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().listarAvaliacao();
+        Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().listarAvaliacaoDaEmpresa(empresa.getIdempresa());
         call.enqueue(new Callback<List<Avaliacao>>() {
             @Override
             public void onResponse(Call<List<Avaliacao>> call, Response<List<Avaliacao>> response) {
                 if (response.code() == 200 || response.isSuccessful()) {
                     List<Avaliacao> lista = response.body();
-                    autor1.setText(lista.get(0).getAutor());
-                    conteudo1.setText(lista.get(0).getConteudo());
+                    switch (lista.size()) {
+                        case 0:
+                            autor1.setText("nenhuma avaliação foi feita hoje...");
+                            conteudo1.setText("Avaliações recentes aparecerão aqui");
 
-                    autor2.setText(lista.get(1).getAutor());
-                    conteudo2.setText(lista.get(1).getConteudo());
+                            cardView2.setVisibility(View.GONE);
+                            cardView3.setVisibility(View.GONE);
+                            break;
 
-                    autor3.setText(lista.get(3).getAutor());;
-                    conteudo3.setText(lista.get(3).getConteudo());
+                        case 1: // caso a lista só tenha 1 elemento
+                            autor1.setText(lista.get(0).getAutor());
+                            conteudo1.setText(lista.get(0).getConteudo());
+
+                            cardView2.setVisibility(View.GONE);
+                            cardView3.setVisibility(View.GONE);
+                            break;
+                        case 2: // caso a lista só tenha 2 elemento
+                            autor1.setText(lista.get(0).getAutor());
+                            conteudo1.setText(lista.get(0).getConteudo());
+
+                            autor2.setText(lista.get(1).getAutor());
+                            conteudo2.setText(lista.get(1).getConteudo());
+
+                            cardView3.setVisibility(View.GONE);
+                            break;
+                        case 3: // caso a lista tenha 3 elementos
+                            autor1.setText(lista.get(0).getAutor());
+                            conteudo1.setText(lista.get(0).getConteudo());
+
+                            autor2.setText(lista.get(1).getAutor());
+                            conteudo2.setText(lista.get(1).getConteudo());
+
+                            autor3.setText(lista.get(2).getAutor());
+                            conteudo3.setText(lista.get(2).getConteudo());
+                            break;
+                    }
+                    if (lista.size() > 3) {
+                        autor1.setText(lista.get(0).getAutor());
+                        conteudo1.setText(lista.get(0).getConteudo());
+
+                        autor2.setText(lista.get(1).getAutor());
+                        conteudo2.setText(lista.get(1).getConteudo());
+
+                        autor3.setText(lista.get(2).getAutor());
+                        conteudo3.setText(lista.get(2).getConteudo());
+                    }
                 }
             }
 
