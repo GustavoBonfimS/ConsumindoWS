@@ -40,6 +40,8 @@ public class TelaPesquisa extends AppCompatActivity {
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
             status = "logado";
+        } else if (getIntent().getStringExtra("status").equals("empresa")) {
+            status = "empresa";
         } else status = "convidado";
         final SearchView pesquisar = (SearchView) findViewById(R.id.search);
         pesquisar.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -78,8 +80,12 @@ public class TelaPesquisa extends AppCompatActivity {
                                         if (status.equals("logado")) {
                                             telaEmrpes.putExtra("cliente", cliente);
                                         } else if (status.equals("empresa")) {
+                                            // caso seja uma empresa que esteja logada
                                             empresaLogada = (Empresa) getIntent()
                                                     .getSerializableExtra("empresa");
+                                            String nomeEmpresa = getIntent().getStringExtra("loginEmpresaLogada");
+                                            Log.e("wig", "loginEmpresa " + nomeEmpresa);
+                                            telaEmrpes.putExtra("loginEmpresaLogada", nomeEmpresa);
                                             telaEmrpes.putExtra("empresaLogada", empresaLogada);
                                         }
                                         startActivity(telaEmrpes);

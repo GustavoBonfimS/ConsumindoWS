@@ -43,7 +43,6 @@ public class telaEmpresa extends AppCompatActivity {
     TextView conteudo3;
     Empresa empresaLogada;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +63,7 @@ public class telaEmpresa extends AppCompatActivity {
         responder2 = findViewById(R.id.tvResponder2);
         responder3 = findViewById(R.id.tvResponder3);
         nomeEmpresa = getIntent().getStringExtra("empresaNome");
+        final String nomeEmpresaLogada = getIntent().getStringExtra("loginEmpresaLogada");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
 
@@ -71,17 +71,18 @@ public class telaEmpresa extends AppCompatActivity {
         if (getIntent().getStringExtra("status").equals("logado")) {
             cliente = (Cliente) getIntent().getSerializableExtra("cliente");
         } else if (getIntent().getStringExtra("status").equals("empresa")) {
-            responder1.setVisibility(View.VISIBLE);
-            responder2.setVisibility(View.VISIBLE);
-            responder3.setVisibility(View.VISIBLE);
-            responder1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(telaEmpresa.this, "funcionando...", Toast.LENGTH_SHORT).show();
-                }
-            });
-            avaliar.setVisibility(View.GONE);
-            empresaLogada = (Empresa) getIntent().getSerializableExtra("empresaLogada");
+            if (nomeEmpresaLogada.equalsIgnoreCase(nomeEmpresa)) {
+                // é passado o nome da empresa com redundcancia pois passando pelo metodo gera null ex
+                // apenas se o nome da empresa logada for igual o nome da empresa visitada
+                // sera exibido os botoes de responder
+                // garantindo que só a propria empresa responda suas avaliações
+                responder1.setVisibility(View.VISIBLE);
+                responder2.setVisibility(View.VISIBLE);
+                responder3.setVisibility(View.VISIBLE);
+
+                avaliar.setVisibility(View.GONE);
+                empresaLogada = (Empresa) getIntent().getSerializableExtra("empresaLogada");
+            }
         } else avaliar.setVisibility(View.GONE);
 
         nome.setText(nomeEmpresa);
@@ -98,6 +99,7 @@ public class telaEmpresa extends AppCompatActivity {
             }
         });
 
+        // setar conteudo das avaliacoes mostradas na tela
         Call<List<Avaliacao>> call = new RetrofitConfig().getWigService().listarAvaliacao();
         call.enqueue(new Callback<List<Avaliacao>>() {
             @Override
@@ -121,5 +123,52 @@ public class telaEmpresa extends AppCompatActivity {
             }
         });
 
+        // responder a primeira avaliacao mostrada na tela
+        responder1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaResposta = new Intent(telaEmpresa.this, RespostaAvaliacaoActivity.class);
+                Avaliacao a = new Avaliacao();
+                a.setAutor(autor1.getText().toString());
+                a.setConteudo(conteudo1.getText().toString());
+
+                telaResposta.putExtra("avaliacao", a);
+                telaResposta.putExtra("autor", nomeEmpresa);
+                telaResposta.putExtra("empresa", empresaLogada);
+                startActivity(telaResposta);
+            }
+        });
+
+        // responder a segunda avaliacao mostrada na tela
+        responder2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaResposta = new Intent(telaEmpresa.this, RespostaAvaliacaoActivity.class);
+                Avaliacao a = new Avaliacao();
+                a.setAutor(autor2.getText().toString());
+                a.setConteudo(conteudo2.getText().toString());
+
+                telaResposta.putExtra("avaliacao", a);
+                telaResposta.putExtra("autor", nomeEmpresa);
+                telaResposta.putExtra("empresa", empresaLogada);
+                startActivity(telaResposta);
+            }
+        });
+
+        // responder a terceira avaliacao mostrada na tela
+        responder3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent telaResposta = new Intent(telaEmpresa.this, RespostaAvaliacaoActivity.class);
+                Avaliacao a = new Avaliacao();
+                a.setAutor(autor3.getText().toString());
+                a.setConteudo(conteudo3.getText().toString());
+
+                telaResposta.putExtra("avaliacao", a);
+                telaResposta.putExtra("autor", nomeEmpresa);
+                telaResposta.putExtra("empresa", empresaLogada);
+                startActivity(telaResposta);
+            }
+        });
     }
 }

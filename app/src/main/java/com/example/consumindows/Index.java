@@ -127,6 +127,7 @@ public class Index extends AppCompatActivity {
                 if (empresa != null) {
                     // caso seja empresa sera passado o obj para a tela de pesquisa
                     telaPesquisa.putExtra("empresa", empresa);
+                    telaPesquisa.putExtra("loginEmpresaLogada", clienteLogin);
                 }
                 startActivity(telaPesquisa);
             }
@@ -151,7 +152,7 @@ public class Index extends AppCompatActivity {
     // (caso esteja logado)
     @Override
     public void onBackPressed() {
-        if (status.equals("convidado")) {
+        if (status.equals("convidado") || status.equals("empresa")) {
             finish();
         }
     }

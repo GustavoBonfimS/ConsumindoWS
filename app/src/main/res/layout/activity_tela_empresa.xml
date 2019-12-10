@@ -92,7 +92,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="responder"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:layout_gravity="end"/>
 
             <TextView
@@ -122,7 +122,7 @@
                 android:id="@+id/tvResponder2"
                 android:layout_height="wrap_content"
                 android:text="responder"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:layout_gravity="end"/>
 
             <TextView
@@ -152,7 +152,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/tvResponder3"
                 android:text="responder"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:layout_gravity="end"/>
 
             <TextView

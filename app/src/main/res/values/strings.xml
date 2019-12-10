@@ -54,4 +54,7 @@
     <string name="entrar_convidado">Ou entre como convidado (apenas visualização)</string>
     <string name="avaliar">Avaliar</string>
     <string name="avaliacoesM">AVALIAÇÕES</string>
+    <string name="responder_avaliacao">Responder Avaliacao</string>
+    <string name="tbnResponder">Responder</string>
+    <string name="voltar">voltar</string>
 </resources>

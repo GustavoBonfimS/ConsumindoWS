@@ -24,7 +24,7 @@ import retrofit2.http.Path;
 
 public class RetrofitConfig {
     private final Retrofit retrofit;
-    String url = "http://10.10.54.47:8080/WigWS/webresources/";
+    String url = "http://192.168.0.31:8080/WigWS/webresources/";
 
     Gson g = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 
@@ -97,14 +97,9 @@ public class RetrofitConfig {
         @Headers("Content-Type: application/json")
         Call<List<Avaliacao>> listarAvaliacaoDaEmpresa(int idempresa);
 
-
         @POST("cliente/Avaliacao/Inserir")
         @Headers("Content-Type: application/json")
         Call<Avaliacao> inserirAvaliacao(@Body Avaliacao avaliacao);
-
-        @POST("cliente/Avaliacao/Responder")
-        @Headers("Content-Type: application/json")
-        Call<Avaliacao> responderAvaliacao(@Body Avaliacao avaliacao);
 
         @GET("cliente/Avaliacao/get/{conteudo}")
         @Headers("Content-Type: application/json")
@@ -135,6 +130,10 @@ public class RetrofitConfig {
         @GET("empresa/pesquisa/{empresa}")
         @Headers("Content-Type: application/json")
         Call<List<Empresa>> pesquisa(@Path("empresa") String empresa);
+
+        @POST("cliente/Avaliacao/Responder")
+        @Headers("Content-Type: application/json")
+        Call<String> responderAvaliacao(@Body Avaliacao resposta);
 
     }
 
