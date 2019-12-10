@@ -90,6 +90,9 @@ public class RetrofitConfig {
         @GET("cliente/Avaliacao/minhas/{idcliente}")
         Call<List<Avaliacao>> minhasAvaliacoes(@Path("idcliente") int idcliente);
 
+        @GET("cliente/Avaliacao/Resposta/get/{idavaliacao}")
+        Call<Avaliacao> getResposta(@Path("idavaliacao") int idavaliacao);
+
         @GET("cliente/Avaliacao/Listar")
         Call<List<Avaliacao>> listarAvaliacao();
 

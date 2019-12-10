@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@drawable/background"
     tools:context=".InfoAvaliacaoActivity">
@@ -116,6 +117,29 @@
         android:layout_marginTop="20dp"
         android:textSize="25sp" />
 
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/respostaCV"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="@color/laranjaPrincipal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/tvAutorResposta"
+            android:text="Autor"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:id="@+id/tvConteudoResposta"
+            android:layout_marginTop="30dp"
+            android:text="Conteudo"
+            android:textSize="20sp" />
+    </androidx.cardview.widget.CardView>
 
 
 
