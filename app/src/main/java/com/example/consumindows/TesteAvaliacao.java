@@ -4,11 +4,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,17 +28,23 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class TesteAvaliacao extends AppCompatActivity {
+
     Empresa empresa;
     Cliente cliente;
     EditText etAutor;
     EditText etConteudo;
+    CheckBox checkAnonimo;
+    TextView tAnon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_teste_avaliacao);
+
+        checkAnonimo = findViewById(R.id.checkAnonimo);
         etAutor = findViewById(R.id.etAutor);
+        tAnon = findViewById(R.id.tAnon);
         final Button btAvalia = findViewById(R.id.btnAvaliacao);
         final Button btnVoltar = findViewById(R.id.btnVoltar);
         etConteudo = findViewById(R.id.etConteudo);
@@ -43,6 +52,21 @@ public class TesteAvaliacao extends AppCompatActivity {
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
         cliente = (Cliente) getIntent().getSerializableExtra("cliente");
+
+        checkAnonimo.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (!isChecked){
+                    etAutor.setVisibility(View.VISIBLE);
+                    tAnon.setVisibility(View.GONE);
+                }
+                else{
+                    etAutor.setVisibility(View.GONE);
+                    tAnon.setVisibility(View.VISIBLE);
+                }
+
+            }
+        });
 
         btAvalia.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,6 +150,7 @@ public class TesteAvaliacao extends AppCompatActivity {
         boolean resultado = (TextUtils.isEmpty(valor)) || valor.trim().isEmpty();
         return resultado;
     }
+
 
 }
 
