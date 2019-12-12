@@ -35,6 +35,7 @@ public class TesteAvaliacao extends AppCompatActivity {
     EditText etConteudo;
     CheckBox checkAnonimo;
     TextView tAnon;
+    String strAnonimo = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class TesteAvaliacao extends AppCompatActivity {
                 else{
                     etAutor.setVisibility(View.GONE);
                     tAnon.setVisibility(View.VISIBLE);
+                    strAnonimo = "Anônimo";
                 }
 
             }
@@ -73,7 +75,11 @@ public class TesteAvaliacao extends AppCompatActivity {
             public void onClick(View v) {
                 if (!validaCampos()) {
 
-                    a.setAutor(etAutor.getText().toString());
+                    if (strAnonimo != null) {
+                        a.setAutor(strAnonimo);
+                    } else {
+                        a.setAutor(etAutor.getText().toString());
+                    }
                     a.setConteudo(etConteudo.getText().toString());
                     a.setIdcliente(cliente.getIdcliente());
                     a.setIdempresa(empresa.getIdempresa());
@@ -130,8 +136,9 @@ public class TesteAvaliacao extends AppCompatActivity {
         String autor = etAutor.getText().toString();
         String conteudo = etConteudo.getText().toString();
 
-        if (res = isCampoVazio(autor)) {
+        if (isCampoVazio(autor) && etAutor.getVisibility() == View.VISIBLE) {
             etAutor.requestFocus();
+            res = true;
         } else if (res = isCampoVazio(conteudo)) {
             etConteudo.requestFocus();
         }
