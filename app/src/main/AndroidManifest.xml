@@ -22,7 +22,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".TelaPesquisa" />
-        <activity android:name=".telaBuscar" />
         <activity
             android:name=".Index"
             android:label="@string/title_activity_index"

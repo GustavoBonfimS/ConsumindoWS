@@ -31,11 +31,12 @@ public class TesteAvaliacao extends AppCompatActivity {
 
     Empresa empresa;
     Cliente cliente;
-    EditText etAutor;
+    // EditText etAutor; comentado no xml
     EditText etConteudo;
     CheckBox checkAnonimo;
     TextView tAnon;
     String strAnonimo = null;
+    String clienteNome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +45,14 @@ public class TesteAvaliacao extends AppCompatActivity {
         setContentView(R.layout.activity_teste_avaliacao);
 
         checkAnonimo = findViewById(R.id.checkAnonimo);
-        etAutor = findViewById(R.id.etAutor);
+        // etAutor = findViewById(R.id.etAutor);
         tAnon = findViewById(R.id.tAnon);
         final Button btAvalia = findViewById(R.id.btnAvaliacao);
         final Button btnVoltar = findViewById(R.id.btnVoltar);
         etConteudo = findViewById(R.id.etConteudo);
         final Avaliacao a = new Avaliacao();
+
+        clienteNome = getIntent().getStringExtra("clienteNome");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
         cliente = (Cliente) getIntent().getSerializableExtra("cliente");
@@ -58,11 +61,9 @@ public class TesteAvaliacao extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (!isChecked){
-                    etAutor.setVisibility(View.VISIBLE);
                     tAnon.setVisibility(View.GONE);
                 }
                 else{
-                    etAutor.setVisibility(View.GONE);
                     tAnon.setVisibility(View.VISIBLE);
                     strAnonimo = "Anônimo";
                 }
@@ -78,7 +79,7 @@ public class TesteAvaliacao extends AppCompatActivity {
                     if (strAnonimo != null) {
                         a.setAutor(strAnonimo);
                     } else {
-                        a.setAutor(etAutor.getText().toString());
+                        a.setAutor(clienteNome);
                     }
                     a.setConteudo(etConteudo.getText().toString());
                     a.setIdcliente(cliente.getIdcliente());
@@ -133,13 +134,10 @@ public class TesteAvaliacao extends AppCompatActivity {
 
     private boolean validaCampos() {
         boolean res = false;
-        String autor = etAutor.getText().toString();
+        // String autor = etAutor.getText().toString();
         String conteudo = etConteudo.getText().toString();
 
-        if (isCampoVazio(autor) && etAutor.getVisibility() == View.VISIBLE) {
-            etAutor.requestFocus();
-            res = true;
-        } else if (res = isCampoVazio(conteudo)) {
+        if (res = isCampoVazio(conteudo)) {
             etConteudo.requestFocus();
         }
 

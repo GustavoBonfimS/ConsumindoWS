@@ -73,6 +73,8 @@ public class TelaPesquisa extends AppCompatActivity {
                                         String nome = empresa.getLogin();
 
                                         Intent telaEmrpes = new Intent(TelaPesquisa.this, telaEmpresa.class);
+                                        String clienteNome = getIntent().getStringExtra("clienteNome");
+                                        telaEmrpes.putExtra("clienteNome", clienteNome);
                                         telaEmrpes.putExtra("empresa", empresa);
                                         telaEmrpes.putExtra("empresaNome", nome);
                                         telaEmrpes.putExtra("status", status);

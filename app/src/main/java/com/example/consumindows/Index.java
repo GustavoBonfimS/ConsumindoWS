@@ -45,6 +45,7 @@ public class Index extends AppCompatActivity {
     TextView autor1;
     TextView conteudo1;
     Empresa empresa;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +54,10 @@ public class Index extends AppCompatActivity {
         final Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        autor1 = findViewById(R.id.tvAutor1);
-        conteudo1 = findViewById(R.id.tvConteudo1);
+
+
+        //autor1 = findViewById(R.id.tvAutor1);
+        // conteudo1 = findViewById(R.id.tvConteudo1);
 
         Bundle b = getIntent().getExtras();
         if (b.getString("login").equals("convidado")) {
@@ -98,6 +101,12 @@ public class Index extends AppCompatActivity {
                             if (response.code() == 200 || response.isSuccessful()) {
                                 if (response.body() != null) {
                                     clienteOBJ = response.body();
+                                    View headerView = navigationView.getHeaderView(0);
+                                    TextView nomeDoUsuario = headerView.findViewById(R.id.tvNomeDeUsuario);
+                                    nomeDoUsuario.setText(clienteOBJ.getLogin());
+
+                                    TextView emailDoUsuario = headerView.findViewById(R.id.tvEmailUsuario);
+                                    emailDoUsuario.setText(clienteOBJ.getEmail());
                                 }
                             }
                         }
@@ -124,6 +133,9 @@ public class Index extends AppCompatActivity {
                 Intent telaPesquisa = new Intent(Index.this, TelaPesquisa.class);
                 telaPesquisa.putExtra("cliente", clienteOBJ);
                 telaPesquisa.putExtra("status", status);
+                if (status.equals("logado")) {
+                    telaPesquisa.putExtra("clienteNome", clienteLogin);
+                }
                 if (empresa != null) {
                     // caso seja empresa sera passado o obj para a tela de pesquisa
                     telaPesquisa.putExtra("empresa", empresa);
@@ -133,7 +145,7 @@ public class Index extends AppCompatActivity {
             }
         });
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
@@ -145,6 +157,7 @@ public class Index extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
 
     }
 

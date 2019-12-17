@@ -76,7 +76,9 @@ public class telaEmpresa extends AppCompatActivity {
         final String nomeEmpresaLogada = getIntent().getStringExtra("loginEmpresaLogada");
 
         empresa = (Empresa) getIntent().getSerializableExtra("empresa");
-
+        nome.setText(nomeEmpresa);
+        endereco.setText(empresa.getEndereco());
+        tipo.setText(empresa.getTipo());
 
         // verifica o status do usuario logado (empresa, usuario normal ou convidado)
         if (getIntent().getStringExtra("status").equals("logado")) {
@@ -96,14 +98,12 @@ public class telaEmpresa extends AppCompatActivity {
             }
         } else avaliar.setVisibility(View.GONE);
 
-        nome.setText(nomeEmpresa);
-        endereco.setText(empresa.getEndereco());
-        tipo.setText(empresa.getTipo());
-
         avaliar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent telaAvaliacao = new Intent(telaEmpresa.this, TesteAvaliacao.class);
+                String clienteNome = getIntent().getStringExtra("clienteNome");
+                telaAvaliacao.putExtra("clienteNome", clienteNome);
                 telaAvaliacao.putExtra("empresa", empresa);
                 telaAvaliacao.putExtra("cliente", cliente);
                 startActivity(telaAvaliacao);
