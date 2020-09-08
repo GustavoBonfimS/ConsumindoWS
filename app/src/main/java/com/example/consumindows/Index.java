@@ -55,7 +55,18 @@ public class Index extends AppCompatActivity {
 
         autor1 = findViewById(R.id.tvAutor1);
         conteudo1 = findViewById(R.id.tvConteudo1);
+        status = "cliente";
 
+        Cliente c = new Cliente();
+        c.setCPF("12345678900");
+        c.setIdcliente(1);
+        c.setEmail("teste@voltei.com");
+        c.setIdusuario(1);
+        c.setLogin("voltei");
+        c.setPerfil("cliente");
+        c.setSenha("1234");
+
+        /*
         Bundle b = getIntent().getExtras();
         if (b.getString("login").equals("convidado")) {
             Toast.makeText(this, "Você entrou como convidado", Toast.LENGTH_LONG).show();
@@ -65,7 +76,9 @@ public class Index extends AppCompatActivity {
             clienteLogin = b.getString("login");
             status = "logado";
         }
+         */
 
+        /*
         // buscar usuario pra ver se o usuario logado é uma empresa
         Call<Usuario> buscarUsuario = new RetrofitConfig().getWigService().buscarUsuario(clienteLogin);
         buscarUsuario.enqueue(new Callback<Usuario>() {
@@ -116,6 +129,7 @@ public class Index extends AppCompatActivity {
                 Log.e("wig", "erro ao fazer request" + t.getMessage());
             }
         });
+         */
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

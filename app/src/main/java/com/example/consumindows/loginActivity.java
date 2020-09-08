@@ -41,6 +41,13 @@ public class loginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Intent telaIndex = new Intent(loginActivity.this, Index.class);
+                Bundle param = new Bundle();
+                param.putString("login", etLogin.getText().toString());
+
+                telaIndex.putExtras(param);
+                startActivity(telaIndex);
+                /*
                 if (!validaCampos()) {
 
                     Call<String> call = new RetrofitConfig().getWigService()
@@ -69,6 +76,8 @@ public class loginActivity extends AppCompatActivity {
                         }
                     });
                 }
+
+                 */
             }
         });
 
