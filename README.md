@@ -2,6 +2,12 @@
 
 project Where I Go - application on Android
 
+## Screenshots
+
+<img src="/screenshots/splash.jpg" alt="splash" width="80"/> | <img src="/screenshots/login.jpg" alt="login" width="80"/>
+<img src="/screenshots/search.jpg" alt="pesquisa" width="80"/> | <img src="/screenshots/home.jpg" alt="home" width="80"/>
+<img src="/screenshots/info.jpg" alt="infos" width="80"/> | <img src="/screenshots/menu.jpg" alt="menu" width="80"/>
+
 URL DA API:
 
 http://localhost:8080/WigWS/webresources/
